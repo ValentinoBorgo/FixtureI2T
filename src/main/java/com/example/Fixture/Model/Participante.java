@@ -5,26 +5,30 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "usuario")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Usuario {
+@Entity
+@Table(name = "participante")
+public class Participante {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
     @Column(name = "nombre")
     private String nombre;
-    @Column(name = "apellido")
-    private String apellido;
-    @Column(name = "mail")
-    private String mail;
-    @Column(name = "contrasenia")
-    private String contrasenia;
-    @Column(name = "fecha_baja")
-    private String fecha_baja;
 
+    @Column(name = "colores")
+    private String colores;
+
+    @Column(name = "trofeos")
+    private int trofeos;
+
+    @Column(name = "fecha_baja")
+    private LocalDateTime fecha_baja;
 }
+
