@@ -3,9 +3,11 @@ package com.example.Fixture.Model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 
 @Entity
+@Table(name = "usuario")
 public class Usuario {
 
     @Id
@@ -16,10 +18,22 @@ public class Usuario {
     private String apellido;
     @Column(name = "mail")
     private String mail;
-    @Column(name = "contraseña")
-    private String contraseña;
+    @Column(name = "contrasenia")
+    private String contrasenia;
     @Column(name = "fecha_baja")
     private String fecha_baja;
+    
+     public Usuario(Long id, String nombre, String apellido, String mail, String contrasenia, String fecha_baja) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.contrasenia = contrasenia;
+        this.fecha_baja = fecha_baja;
+    }
+
+    public Usuario() {
+    }
 
     public Long getId() {
         return id;
@@ -53,12 +67,12 @@ public class Usuario {
         this.mail = mail;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasenia (String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     public String getFecha_baja() {
@@ -68,19 +82,5 @@ public class Usuario {
     public void setFecha_baja(String fecha_baja) {
         this.fecha_baja = fecha_baja;
     }
-
-    public Usuario(Long id, String nombre, String apellido, String mail, String contraseña, String fecha_baja) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.mail = mail;
-        this.contraseña = contraseña;
-        this.fecha_baja = fecha_baja;
-    }
-
-    public Usuario() {
-    }
     
-    
-
 }
