@@ -15,7 +15,7 @@ public class UsuarioService implements IUsuarioService{
     private IUsuarioRepository userRepo;
 
     @Override
-    public List<Usuario> getUsuarios() {
+    public List<Usuario> getListaUsuarios() {
         return userRepo.findAll();
     }
 

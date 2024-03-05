@@ -23,7 +23,7 @@ public class UsuarioController {
     @GetMapping("/get")
     public List<Usuario> getUsuarios(){
          System.out.println("------------------- Estoy en el puerto " + puerto);
-        return uService.getUsuarios();
+        return uService.getListaUsuarios();
     }
 
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface IUsuarioService {
     
-public List<Usuario> getUsuarios();
+public List<Usuario> getListaUsuarios();
 
 public Usuario guardarUsuario(Usuario user);
 
