@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-03-2024 a las 13:28:04
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 05-03-2024 a las 20:29:06
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `autoridades`
+--
+
+CREATE TABLE `autoridades` (
+  `id` int(11) NOT NULL,
+  `nombre` enum('WRITE','READ','ADMIN') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `autoridades`
+--
+
+INSERT INTO `autoridades` (`id`, `nombre`) VALUES
+(1, 'WRITE'),
+(2, 'READ'),
+(3, 'ADMIN');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `clasificacion`
 --
 
@@ -35,7 +55,7 @@ CREATE TABLE `clasificacion` (
   `nro_empatados` int(11) NOT NULL DEFAULT 0,
   `nro_perdidos` int(11) NOT NULL DEFAULT 0,
   `fecha_baja` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `clasificacion`
@@ -62,28 +82,28 @@ INSERT INTO `clasificacion` (`id`, `id_competidor`, `id_competencia`, `nro_ganad
 CREATE TABLE `competencia` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `estado` smallint(6) NOT NULL,
+  `estado` varchar(255) DEFAULT NULL,
   `fecha_baja` datetime DEFAULT NULL,
   `fecha_inicio` datetime NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `id_usuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `competencia`
 --
 
 INSERT INTO `competencia` (`id`, `nombre`, `estado`, `fecha_baja`, `fecha_inicio`, `fecha_creacion`, `id_usuario`) VALUES
-(1, 'Competencia 1', 1, NULL, '2024-01-01 00:00:00', '2024-01-01 00:00:00', 1),
-(2, 'Competencia 2', 1, NULL, '2024-02-01 00:00:00', '2024-01-15 00:00:00', 2),
-(3, 'Competencia 3', 1, NULL, '2024-03-01 00:00:00', '2024-02-15 00:00:00', 3),
-(4, 'Competencia 4', 1, NULL, '2024-04-01 00:00:00', '2024-03-15 00:00:00', 4),
-(5, 'Competencia 5', 1, NULL, '2024-05-01 00:00:00', '2024-04-15 00:00:00', 5),
-(6, 'Competencia 6', 1, NULL, '2024-06-01 00:00:00', '2024-05-15 00:00:00', 6),
-(7, 'Competencia 7', 1, NULL, '2024-07-01 00:00:00', '2024-06-15 00:00:00', 7),
-(8, 'Competencia 8', 1, NULL, '2024-08-01 00:00:00', '2024-07-15 00:00:00', 8),
-(9, 'Competencia 9', 1, NULL, '2024-09-01 00:00:00', '2024-08-15 00:00:00', 9),
-(10, 'Competencia 10', 1, NULL, '2024-10-01 00:00:00', '2024-09-15 00:00:00', 10);
+(1, 'Competencia 1', '1', NULL, '2024-01-01 00:00:00', '2024-01-01 00:00:00', 1),
+(2, 'Competencia 2', '1', NULL, '2024-02-01 00:00:00', '2024-01-15 00:00:00', 2),
+(3, 'Competencia 3', '1', NULL, '2024-03-01 00:00:00', '2024-02-15 00:00:00', 3),
+(4, 'Competencia 4', '1', NULL, '2024-04-01 00:00:00', '2024-03-15 00:00:00', 4),
+(5, 'Competencia 5', '1', NULL, '2024-05-01 00:00:00', '2024-04-15 00:00:00', 5),
+(6, 'Competencia 6', '1', NULL, '2024-06-01 00:00:00', '2024-05-15 00:00:00', 6),
+(7, 'Competencia 7', '1', NULL, '2024-07-01 00:00:00', '2024-06-15 00:00:00', 7),
+(8, 'Competencia 8', '1', NULL, '2024-08-01 00:00:00', '2024-07-15 00:00:00', 8),
+(9, 'Competencia 9', '1', NULL, '2024-09-01 00:00:00', '2024-08-15 00:00:00', 9),
+(10, 'Competencia 10', '1', NULL, '2024-10-01 00:00:00', '2024-09-15 00:00:00', 10);
 
 -- --------------------------------------------------------
 
@@ -97,7 +117,7 @@ CREATE TABLE `participante` (
   `colores` varchar(100) DEFAULT NULL,
   `trofeos` varchar(500) DEFAULT NULL,
   `fecha_baja` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `participante`
@@ -122,31 +142,31 @@ INSERT INTO `participante` (`id`, `nombre`, `colores`, `trofeos`, `fecha_baja`) 
 --
 
 CREATE TABLE `partido` (
-  `id` int(11) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `id_local` int(11) NOT NULL,
   `id_visitante` int(11) NOT NULL,
-  `id_competencia` int(11) NOT NULL,
+  `id_competencia` bigint(20) DEFAULT NULL,
   `goles_local` int(11) NOT NULL DEFAULT 0,
   `goles_visitante` int(11) NOT NULL DEFAULT 0,
   `fecha_baja` datetime DEFAULT NULL,
-  `fecha_realizacion` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `fecha_realizacion` datetime(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `partido`
 --
 
 INSERT INTO `partido` (`id`, `id_local`, `id_visitante`, `id_competencia`, `goles_local`, `goles_visitante`, `fecha_baja`, `fecha_realizacion`) VALUES
-(1, 1, 2, 1, 3, 1, NULL, '2024-01-01'),
-(2, 3, 4, 2, 2, 2, NULL, '2024-02-01'),
-(3, 5, 6, 3, 1, 0, NULL, '2024-03-01'),
-(4, 7, 8, 4, 0, 3, NULL, '2024-04-01'),
-(5, 9, 10, 5, 2, 1, NULL, '2024-05-01'),
-(6, 1, 3, 6, 1, 1, NULL, '2024-06-01'),
-(7, 2, 4, 7, 0, 0, NULL, '2024-07-01'),
-(8, 5, 7, 8, 3, 2, NULL, '2024-08-01'),
-(9, 6, 8, 9, 2, 3, NULL, '2024-09-01'),
-(10, 9, 1, 10, 1, 2, NULL, '2024-10-01');
+(1, 1, 2, 1, 3, 1, NULL, '2024-01-01 00:00:00.000000'),
+(2, 3, 4, 2, 2, 2, NULL, '2024-02-01 00:00:00.000000'),
+(3, 5, 6, 3, 1, 0, NULL, '2024-03-01 00:00:00.000000'),
+(4, 7, 8, 4, 0, 3, NULL, '2024-04-01 00:00:00.000000'),
+(5, 9, 10, 5, 2, 1, NULL, '2024-05-01 00:00:00.000000'),
+(6, 1, 3, 6, 1, 1, NULL, '2024-06-01 00:00:00.000000'),
+(7, 2, 4, 7, 0, 0, NULL, '2024-07-01 00:00:00.000000'),
+(8, 5, 7, 8, 3, 2, NULL, '2024-08-01 00:00:00.000000'),
+(9, 6, 8, 9, 2, 3, NULL, '2024-09-01 00:00:00.000000'),
+(10, 9, 1, 10, 1, 2, NULL, '2024-10-01 00:00:00.000000');
 
 -- --------------------------------------------------------
 
@@ -160,8 +180,8 @@ CREATE TABLE `usuario` (
   `apellido` varchar(50) NOT NULL,
   `mail` varchar(50) NOT NULL,
   `contrasenia` varchar(30) NOT NULL,
-  `fecha_baja` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `fecha_baja` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -178,12 +198,29 @@ INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `mail`, `contrasenia`, `fecha
 (8, 'Jose', 'Hernandez', 'jose.hernandez@mail.com', 'jose123', NULL),
 (9, 'Carmen', 'Torres', 'carmen.torres@mail.com', 'carmen123', NULL),
 (10, 'Manuel', 'Ramirez', 'manuel.ramirez@mail.com', 'manuel123', NULL),
-(11, 'Sofia', 'Morales', 'sofia.morales@mail.com', 'sofia123', NULL),
-(42, 'Juan', 'Perez', 'juan.perez111@mail.com', 'juan123', NULL);
+(11, 'Sofia', 'Morales', 'sofia.morales@mail.com', 'sofia123', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario_autoridades`
+--
+
+CREATE TABLE `usuario_autoridades` (
+  `id` int(11) NOT NULL,
+  `autoridad_id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `autoridades`
+--
+ALTER TABLE `autoridades`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `clasificacion`
@@ -224,6 +261,14 @@ ALTER TABLE `usuario`
   ADD UNIQUE KEY `mail` (`mail`);
 
 --
+-- Indices de la tabla `usuario_autoridades`
+--
+ALTER TABLE `usuario_autoridades`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk1_usuario_id` (`usuario_id`),
+  ADD KEY `fk2_autoridad_id` (`autoridad_id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -249,13 +294,19 @@ ALTER TABLE `participante`
 -- AUTO_INCREMENT de la tabla `partido`
 --
 ALTER TABLE `partido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario_autoridades`
+--
+ALTER TABLE `usuario_autoridades`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -280,6 +331,13 @@ ALTER TABLE `competencia`
 ALTER TABLE `partido`
   ADD CONSTRAINT `fk1_ParticipanteLocal` FOREIGN KEY (`id_local`) REFERENCES `participante` (`id`),
   ADD CONSTRAINT `fk2_ParticipanteVisitante` FOREIGN KEY (`id_visitante`) REFERENCES `participante` (`id`);
+
+--
+-- Filtros para la tabla `usuario_autoridades`
+--
+ALTER TABLE `usuario_autoridades`
+  ADD CONSTRAINT `fk1_usuario_id` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`),
+  ADD CONSTRAINT `fk2_autoridad_id` FOREIGN KEY (`autoridad_id`) REFERENCES `autoridades` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
