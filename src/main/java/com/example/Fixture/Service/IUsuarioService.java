@@ -9,7 +9,7 @@ public List<Usuario> getListaUsuarios();
 
 public Usuario guardarUsuario(Usuario user);
 
-public String borarUsuario(Long id);
+public String borrarUsuario(Long id);
 
 public Usuario getUsuario(Long id);
 
