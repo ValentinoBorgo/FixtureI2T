@@ -1,6 +1,7 @@
 package com.example.Fixture.Model;
 
 import jakarta.persistence.*;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "usuario")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Usuario {
 
     @Id
@@ -26,5 +26,21 @@ public class Usuario {
     private String contrasenia;
     @Column(name = "fecha_baja")
     private String fecha_baja;
+    
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_autoridades",
+            joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "autoridad_id", referencedColumnName = "id"))
+    private List<Autoridad> autoridades;
 
+    public Usuario(Long id, String nombre, String apellido, String mail, String contrasenia, String fecha_baja, List<Autoridad> autoridades) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.contrasenia = contrasenia;
+        this.fecha_baja = fecha_baja;
+        this.autoridades = autoridades;
+    }
+    
 }
