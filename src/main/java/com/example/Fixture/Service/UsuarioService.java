@@ -24,11 +24,13 @@ public class UsuarioService implements IUsuarioService{
     public Usuario guardarUsuario(Usuario user) {
         // TODO Auto-generated method stub
         Usuario usuario = new Usuario();
+
         usuario.setNombre(user.getNombre());
         usuario.setApellido(user.getApellido());
         usuario.setMail(user.getMail());
         usuario.setContrasenia(user.getContrasenia());
         usuario.setFecha_baja(user.getFecha_baja());
+        
         return userRepo.save(usuario);
     }
 

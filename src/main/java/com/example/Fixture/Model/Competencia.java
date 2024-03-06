@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 
 import java.time.LocalDateTime;
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Data
 @AllArgsConstructor

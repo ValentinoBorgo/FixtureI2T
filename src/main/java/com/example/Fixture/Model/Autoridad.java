@@ -5,11 +5,11 @@
 package com.example.Fixture.Model;
 
 import com.example.Fixture.Utils.NombreAutoridad;
-import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 /**
  *

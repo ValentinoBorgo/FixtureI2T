@@ -1,10 +1,10 @@
 package com.example.Fixture.Model;
 
-import jakarta.persistence.*;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import javax.persistence.*;
 
 
 @Entity

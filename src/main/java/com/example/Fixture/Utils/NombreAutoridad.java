@@ -8,8 +8,11 @@ package com.example.Fixture.Utils;
  *
  * @author Usuario
  */
+
+ //Enumeracion
 public enum NombreAutoridad {
     
     READ,WRITE,ADMIN
     
 }
+

@@ -24,17 +24,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(path = "/api/users")
 public class UsuarioController {
     
-    @Value("${server.port}")
-    private int puerto;
+    //@Value("${server.port}")
+    //private int puerto;
 
     @Autowired
     private IUsuarioService usuarioService;
 
     @GetMapping("/get")
     public List<Usuario> getUsuarios(){
-         System.out.println("------------------- Estoy en el puerto " + puerto);
+         //System.out.println("------------------- Estoy en el puerto " + puerto);
         return usuarioService.getListaUsuarios();
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Long id) {
         try {
@@ -53,7 +54,7 @@ public class UsuarioController {
             return usuarioService.guardarUsuario(usuario);
         } catch (Exception e) {
             e.printStackTrace(); 
-            Usuario error=new Usuario();
+            Usuario error = new Usuario();
             return error;
         }
     }
