@@ -48,17 +48,23 @@ public class CustomAthorizationFilter extends OncePerRequestFilter {
                     System.out.println("TOKEN : "+token);
                     Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());
                     JWTVerifier verifier = JWT.require(algorithm).build();
+                    //ERROR AQUI
                     DecodedJWT decodedJWT = verifier.verify(token);
                     System.out.println("Decodificación JWT: " + decodedJWT.getPayload());
                     String username = decodedJWT.getSubject();
-                    String[] roles = decodedJWT.getClaim("roles").asArray(String.class);
+                    System.out.println("USERNAME = "+username);
+                    String[] roles = decodedJWT.getClaim("autoridades").asArray(String.class);
+                    System.out.println("ROLES  = "+Arrays.toString(roles));
                     Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
                     Arrays.stream(roles).forEach(role -> {
                         authorities.add(new SimpleGrantedAuthority(role));
                     });
                     UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                             username, null, authorities);
+                    System.out.println("AUTH TOKEN = "+authenticationToken);
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                    System.out.println("REQUEST = "+request.getRequestURL()+" RESPONSE = "+response.getStatus());
+                    response.setStatus(HttpStatus.OK.value());
                     filterChain.doFilter(request, response);
                 } catch (Exception exception) {
                     log.error("Error en el logging en: {}", exception.getMessage());
@@ -72,6 +78,7 @@ public class CustomAthorizationFilter extends OncePerRequestFilter {
                     // TODO: handle exception
                 }
             } else {
+                System.out.println("CHATCHATCHAT");
                 filterChain.doFilter(request, response);
             }
         }

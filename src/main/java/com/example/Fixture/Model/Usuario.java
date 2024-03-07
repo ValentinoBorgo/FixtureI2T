@@ -43,10 +43,4 @@ public class Usuario {
         this.fecha_baja = fecha_baja;
         this.autoridades = autoridades;
     }
-
-    public Collection<Usuario> getRoles() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getRoles'");
-    }
-    
 }

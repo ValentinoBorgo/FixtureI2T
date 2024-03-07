@@ -47,6 +47,7 @@ public class CustomAthenticationFilter extends UsernamePasswordAuthenticationFil
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                                 username,
                                 password);
+                                System.out.println("LOGIN, TOKEN DE AUTH = "+authenticationToken.toString());
                 return authenticationManager.authenticate(authenticationToken);
         }
 
@@ -60,7 +61,7 @@ public class CustomAthenticationFilter extends UsernamePasswordAuthenticationFil
                                 .withSubject(user.getUsername())
                                 .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000))
                                 .withIssuer(request.getRequestURL().toString())
-                                .withClaim("roles",
+                                .withClaim("autoridades",
                                                 user.getAuthorities().stream().map(GrantedAuthority::getAuthority)
                                                                 .collect(Collectors.toList()))
                                 .sign(algorithm);

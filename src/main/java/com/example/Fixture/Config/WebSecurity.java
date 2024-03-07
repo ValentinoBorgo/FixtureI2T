@@ -16,6 +16,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import static org.springframework.http.HttpHeaders.ALLOW;
+import static org.springframework.http.HttpHeaders.HOST;
 import static org.springframework.security.config.http.SessionCreationPolicy.*;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -63,7 +65,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(STATELESS);
         http.authorizeRequests().antMatchers("/api/users/login/**", "/api/users/token/refresh/**").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").permitAll();
         // http.authorizeRequests().antMatchers(HttpMethod.POST,
         // "/api/v1/usuario/save/**").hasAnyAuthority("ROLE_ADMIN",
         // "ROLE_USER");
