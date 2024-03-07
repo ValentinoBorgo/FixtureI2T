@@ -15,4 +15,6 @@ public Usuario getUsuario(Long id);
 
 public Usuario editarUsuario(Long id, Usuario user);
 
+public Usuario buscarPorNombre(String nombre);
+
 }

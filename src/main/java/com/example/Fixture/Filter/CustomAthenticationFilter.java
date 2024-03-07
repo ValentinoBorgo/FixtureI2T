@@ -21,6 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.example.Fixture.Security.SecurityUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
@@ -53,7 +54,7 @@ public class CustomAthenticationFilter extends UsernamePasswordAuthenticationFil
         protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                         FilterChain chain,
                         Authentication authentication) throws IOException, ServletException {
-                User user = (User) authentication.getPrincipal(); // User from userdetails
+                SecurityUser user = (SecurityUser) authentication.getPrincipal(); // User from userdetails
                 Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());
                 String access_token = JWT.create()
                                 .withSubject(user.getUsername())

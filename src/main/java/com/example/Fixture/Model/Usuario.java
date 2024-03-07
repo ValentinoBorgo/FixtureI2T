@@ -1,5 +1,6 @@
 package com.example.Fixture.Model;
 
+import java.util.Collection;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,6 +42,11 @@ public class Usuario {
         this.contrasenia = contrasenia;
         this.fecha_baja = fecha_baja;
         this.autoridades = autoridades;
+    }
+
+    public Collection<Usuario> getRoles() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getRoles'");
     }
     
 }

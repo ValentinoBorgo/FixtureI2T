@@ -1,6 +1,7 @@
 package com.example.Fixture.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.memory.UserAttribute;
@@ -50,6 +51,20 @@ public class UsuarioService implements IUsuarioService{
     public Usuario editarUsuario(Long id, Usuario user) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'editarUsuario'");
+    }
+
+    @Override
+    public Usuario buscarPorNombre(String nombre) {
+
+        Optional<Usuario> user = userRepo.findByNombre(nombre);
+
+        Usuario userDenegado = new Usuario();
+        userDenegado.setNombre("No Encontrados");
+
+        Usuario usuarioEfectivo = user.orElse(userDenegado);
+
+        return usuarioEfectivo;
+
     }
 
 }
