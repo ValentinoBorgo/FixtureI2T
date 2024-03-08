@@ -103,12 +103,12 @@ public class ClasificacionService implements IClasificacionService{
             puestos.setDiferencia(diferencia);
 
             rank.add(puestos);
+            
         }
-
-        Collections.sort(rank, Comparator.comparingInt(ClasificacionDTO::getPuntos).reversed());
-        //Collections.sort(rank, Comparator.comparingInt(ClasificacionDTO::getDiferencia).reversed());
-        //Collections.sort(rank, Comparator.comparingInt(ClasificacionDTO::getGolesAFavor).reversed());
-
+        rank.sort(Comparator
+                .comparingInt((ClasificacionDTO dto) -> dto.getPuntos()).reversed()
+                .thenComparingInt(dto -> -dto.getDiferencia())
+                .thenComparingInt(ClasificacionDTO::getGolesAFavor));
         return rank;
     }
 
