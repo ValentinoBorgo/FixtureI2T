@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.Fixture.Dto.ClasificacionDTO;
 import com.example.Fixture.Model.Clasificacion;
 import com.example.Fixture.Model.Competencia;
 import com.example.Fixture.Service.IClasificacionService;
@@ -27,8 +29,7 @@ public class ClasificacionController {
     private IClasificacionService clasificacionService;
 
     @GetMapping("/get")
-    public List<Clasificacion> getClasificaciones() {
-
+    public List<ClasificacionDTO> getClasificaciones() {
         return clasificacionService.getListaClasificacion();
     }
     

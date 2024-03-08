@@ -12,6 +12,7 @@ public class PartidoService implements IPartidoService{
 
     @Autowired
     private IPartidoRepository partidoRepo;
+    
     @Override
     public List<Partido> getListaPartidos() {
         return partidoRepo.findAll();
