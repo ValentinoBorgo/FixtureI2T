@@ -31,6 +31,7 @@ public class UsuarioService implements IUsuarioService{
         usuario.setMail(user.getMail());
         usuario.setContrasenia(user.getContrasenia());
         usuario.setFecha_baja(user.getFecha_baja());
+        usuario.setAutoridades(user.getAutoridades());
         
         return userRepo.save(usuario);
     }
@@ -43,8 +44,7 @@ public class UsuarioService implements IUsuarioService{
 
     @Override
     public Usuario getUsuario(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUsuario'");
+        return userRepo.findById(id).orElse(null);
     }
 
     @Override

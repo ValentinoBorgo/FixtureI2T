@@ -26,7 +26,7 @@ public class Participante {
     private String colores;
 
     @Column(name = "trofeos")
-    private int trofeos;
+    private String trofeos;
 
     @Column(name = "fecha_baja")
     private LocalDateTime fecha_baja;

@@ -65,7 +65,15 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(STATELESS);
         http.authorizeRequests().antMatchers("/api/users/login/**", "/api/users/token/refresh/**").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/registrar/newUser").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/get").authenticated();
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/getById/{id}").authenticated();
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/participantes/get").authenticated();
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/partido/get").authenticated();
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/partido/getPartido/{id}").authenticated();
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/clasificaciones/get").authenticated();
+        http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/edit/{id}").authenticated();
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/delete/{id}").authenticated();
         // http.authorizeRequests().antMatchers(HttpMethod.POST,
         // "/api/v1/usuario/save/**").hasAnyAuthority("ROLE_ADMIN",
         // "ROLE_USER");

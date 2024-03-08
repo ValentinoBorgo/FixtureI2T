@@ -55,7 +55,7 @@ public class UsuarioController {
         return usuarioService.getListaUsuarios();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getById/{id}")
     public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Long id) {
         try {
             Usuario usuario= usuarioService.getUsuario(id);
@@ -67,7 +67,7 @@ public class UsuarioController {
 
     }
 
-    @PostMapping("/crear")
+    @PostMapping("/registrar/newUser")
     public Usuario crearUsuario(@RequestBody Usuario usuario) {
         try {
             return usuarioService.guardarUsuario(usuario);
@@ -78,7 +78,7 @@ public class UsuarioController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<Usuario> editarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
         try {
             Usuario usuarioActualizado = usuarioService.editarUsuario(id, usuario);
@@ -89,7 +89,7 @@ public class UsuarioController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> borrarUsuario(@PathVariable Long id) {
         try {
             String mensaje = usuarioService.borrarUsuario(id);

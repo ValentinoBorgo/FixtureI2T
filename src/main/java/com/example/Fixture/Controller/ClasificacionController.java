@@ -31,6 +31,7 @@ public class ClasificacionController {
 
         return clasificacionService.getListaClasificacion();
     }
+    
     @GetMapping("/{id}")
     public ResponseEntity<Clasificacion> obtenerClasificacionPorId(@PathVariable Long id) {
         try {

@@ -79,6 +79,7 @@ public class CustomAthorizationFilter extends OncePerRequestFilter {
                 }
             } else {
                 System.out.println("CHATCHATCHAT");
+                System.out.println("REQUEST = "+request.getRequestURL() + request.getMethod() +" RESPONSE = "+response.getStatus());
                 filterChain.doFilter(request, response);
             }
         }

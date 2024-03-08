@@ -31,7 +31,8 @@ public class PartidoController {
 
         return partidoService.getListaPartidos();
     }
-    @GetMapping("/{id}")
+
+    @GetMapping("getPartido/{id}")
     public ResponseEntity<Partido> obtenerPartidoPorId(@PathVariable Long id) {
         try {
             Partido partido = partidoService.getPartido(id);

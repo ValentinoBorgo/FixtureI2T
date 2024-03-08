@@ -30,6 +30,7 @@ public class ParticipanteController {
 
         return participanteService.getParticipante();
     }
+    
     @GetMapping("/{id}")
     public ResponseEntity<Participante> obtenerParcipantePorId(@PathVariable Long id) {
         try {

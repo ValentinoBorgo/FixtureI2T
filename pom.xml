@@ -82,12 +82,13 @@
                     <version>1.18.30</version>
                     <scope>provided</scope>
                 </dependency>
-	 <dependency>
-	  <groupId>org.springframework.security</groupId>
-	  <artifactId>spring-security-core</artifactId>
-	  <version>6.2.2</version>
-	  <type>jar</type>
-	 </dependency>
+			<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.7.0</version>
+			<type>jar</type>
+			</dependency>
+
 	</dependencies>
         
 	<dependencyManagement>
