@@ -1,0 +1,41 @@
+h2{
+    margin-left : 330px ;
+    margin-top : 50px;
+    width : 13%;
+    text-decoration: underline;
+}
+
+.Agregar{
+    margin-left : 330px ;
+    margin-top : 50px;
+    font-size: larger;
+}
+
+.Patients{
+    width: 50%;
+    margin-left : 330px ;
+    margin-top : 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Tabla{
+    width: 200%;
+    font-size: medium;
+    border: 1px solid black;
+}
+
+.Tabla th{
+    text-align: center;
+    vertical-align: middle;
+    padding: 2px;
+    border: 1px black solid;
+}
+
+.error{
+    margin-left : 330px ;
+    margin-top : 50px;
+    width : 13%;
+    text-decoration: underline;
+}

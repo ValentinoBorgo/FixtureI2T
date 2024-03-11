@@ -1,0 +1,17 @@
+<p>login works!</p>
+
+    <h2>Login</h2>
+    <form [formGroup]="loginForm">
+        <label for="nombre">Usuario : </label>
+        <br>
+        <input formControlName="nombre" type="text" id="nombre" name="nombre" required>
+        <br>
+        <br>
+        <label for="contrasenia">Contraseña : </label>
+        <br>
+        <input formControlName="contrasenia" type="password" id="contrasenia" name="contrasenia" required>
+        <br>
+        <br>
+        <button type="submit">Registrarme</button>
+        <button (click)="login()" type="button" style="margin: 1rem;">Iniciar sesión</button>
+    </form>
