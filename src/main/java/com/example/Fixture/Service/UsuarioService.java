@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.memory.UserAttribute;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.example.Fixture.Model.Usuario;
 import com.example.Fixture.Repository.IUsuarioRepository;
@@ -15,6 +16,14 @@ public class UsuarioService implements IUsuarioService{
 
     @Autowired
     private IUsuarioRepository userRepo;
+
+    private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public UsuarioService(IUsuarioRepository userRepo, PasswordEncoder passwordEncoder) {
+        this.userRepo = userRepo;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public List<Usuario> getListaUsuarios() {
@@ -29,7 +38,7 @@ public class UsuarioService implements IUsuarioService{
         usuario.setNombre(user.getNombre());
         usuario.setApellido(user.getApellido());
         usuario.setMail(user.getMail());
-        usuario.setContrasenia(user.getContrasenia());
+        usuario.setContrasenia(passwordEncoder.encode(user.getContrasenia()));
         usuario.setFecha_baja(user.getFecha_baja());
         usuario.setAutoridades(user.getAutoridades());
         

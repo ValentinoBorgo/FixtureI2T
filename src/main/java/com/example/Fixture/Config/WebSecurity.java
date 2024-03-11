@@ -38,25 +38,11 @@ import lombok.RequiredArgsConstructor;
 public class WebSecurity extends WebSecurityConfigurerAdapter{
 
     private final UserDetailsService userDetailsService;
-    
-    /*
-    @Bean
-    public UserDetailsService userDetailsService(){
-        
-        UserDetails user = User.withUsername("valecapo")
-                .password("123")
-                .roles("lectura")
-                .build();
-        
-        return new InMemoryUserDetailsManager(user);
-        
-    }
-    */
 
-    /*@Override
+    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
-    }*/
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -88,10 +74,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
         return super.authenticationManagerBean();
     }
     
-    //
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
     
 }
