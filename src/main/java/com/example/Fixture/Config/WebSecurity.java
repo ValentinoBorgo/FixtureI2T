@@ -43,6 +43,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+    
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -52,6 +53,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
         http.sessionManagement().sessionCreationPolicy(STATELESS);
         http.authorizeRequests().antMatchers("/api/users/login/**", "/api/users/token/refresh/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/registrar/newUser").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/get").authenticated();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/getById/{id}").authenticated();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/participantes/get").authenticated();

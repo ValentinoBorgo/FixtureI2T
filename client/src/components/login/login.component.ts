@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit{
 
   loginError:string="";
   loginForm = this.formBuilder.group({
-    nombre:['',[Validators.required,Validators.email]],
+    nombre:['',Validators.required],
     contrasenia: ['',Validators.required],
   })
 

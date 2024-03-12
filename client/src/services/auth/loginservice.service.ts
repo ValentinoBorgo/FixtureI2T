@@ -19,15 +19,18 @@ export class LoginserviceService {
   }
 
   login(credentials:LoginRequest):Observable<any>{
+    console.log(credentials);
+    const options = { withCredentials: true };
     //SOLUCIONAR ESTA PARTE DEL CODIGO
-    return this.http.post<any>(environment.urlApi+"users/login",credentials).pipe(
+    return this.http.post<any>(environment.urlApi+"users/login",credentials, options).pipe(
       tap( (userData) => {
-        sessionStorage.setItem("token", userData.token);
-        this.currentUserData.next(userData.token);
+        console.log(userData);
+        sessionStorage.setItem("token", userData.access_token);
+        this.currentUserData.next(userData.access_token);
         this.currentUserLoginOn.next(true);
       }),
       //El map tranforma los datos
-      map((userData) => userData.token),
+      map((userData) => userData.access_token),
       catchError(this.handleError)
     )
   }

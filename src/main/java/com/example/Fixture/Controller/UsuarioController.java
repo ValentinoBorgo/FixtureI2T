@@ -38,30 +38,33 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping(path = "/api/users")
 public class UsuarioController {
-    
+
     //@Value("${server.port}")
     //private int puerto;
-
     @Autowired
     private IUsuarioService usuarioService;
 
     @GetMapping("/get")
-    public List<Usuario> getUsuarios(){
-         System.out.println("USUARIOS ENCONTRADOS-------------------------------");
+    public List<Usuario> getUsuarios() {
+        System.out.println("USUARIOS ENCONTRADOS-------------------------------");
         return usuarioService.getListaUsuarios();
     }
 
     @GetMapping("/getById/{id}")
     public ResponseEntity<Usuario> obtenerUsuarioPorId(@PathVariable Long id) {
         try {
-            Usuario usuario= usuarioService.getUsuario(id);
+            Usuario usuario = usuarioService.getUsuario(id);
             return usuario != null ? ResponseEntity.ok(usuario) : ResponseEntity.notFound().build();
         } catch (Exception e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
@@ -72,7 +75,7 @@ public class UsuarioController {
         try {
             return usuarioService.guardarUsuario(usuario);
         } catch (Exception e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
             Usuario error = new Usuario();
             return error;
         }
@@ -84,7 +87,7 @@ public class UsuarioController {
             Usuario usuarioActualizado = usuarioService.editarUsuario(id, usuario);
             return usuarioActualizado != null ? ResponseEntity.ok(usuarioActualizado) : ResponseEntity.notFound().build();
         } catch (Exception e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -95,11 +98,29 @@ public class UsuarioController {
             String mensaje = usuarioService.borrarUsuario(id);
             return ResponseEntity.ok(mensaje);
         } catch (Exception e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
+
+    @RequestMapping(value = "/login", method = {RequestMethod.OPTIONS, RequestMethod.POST})
+    @ResponseStatus(HttpStatus.OK)
+        public ResponseEntity<?> handleOptions() {
+            try{
+                HttpHeaders headers = new HttpHeaders();
+                headers.add("Access-Control-Allow-Origin", "http://localhost:4200");
+                headers.add("Access-Control-Allow-Methods", "POST, OPTIONS");
+                headers.add("Access-Control-Allow-Headers", "*");
+                headers.add("Access-Control-Allow-Credentials", "true");
+                System.out.println("HEADERS  :  "+headers);
+                return new ResponseEntity<>(headers, HttpStatus.OK);
+            }catch(Exception e){
+                e.printStackTrace();
+                
+            }
+        return null;
+        }
 
     @GetMapping("/token/refresh")
     public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -139,7 +160,5 @@ public class UsuarioController {
             throw new RuntimeException("Refresh token is missing");
         }
     }
-
-
 
 }
