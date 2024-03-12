@@ -22,7 +22,7 @@ public class FixtureApplication {
 			registry.addMapping("/**")
                                 .allowedOrigins("http://localhost:4200")
                                 .allowedMethods("GET","POST","PUT","DELETE","OPTIONS")
-                                .allowedHeaders("*")
+                                .allowedHeaders("Authorization","Content-Type","X-Requested-With")
                                 .allowCredentials(true);
 		}
 	};

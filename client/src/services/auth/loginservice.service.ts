@@ -14,18 +14,19 @@ export class LoginserviceService {
   currentUserData: BehaviorSubject<String> =new BehaviorSubject<String>("");
 
   constructor(private http:HttpClient) { 
-    this.currentUserLoginOn = new BehaviorSubject<boolean>(sessionStorage.getItem("token")!=null);
-    this.currentUserData = new BehaviorSubject<String>(sessionStorage.getItem("token") || "");
+    this.currentUserLoginOn = new BehaviorSubject<boolean>(sessionStorage.getItem("access_token")!=null);
+    this.currentUserData = new BehaviorSubject<String>(sessionStorage.getItem("access_token") || "");
   }
 
   login(credentials:LoginRequest):Observable<any>{
     console.log(credentials);
     const options = { withCredentials: true };
     //SOLUCIONAR ESTA PARTE DEL CODIGO
-    return this.http.post<any>(environment.urlApi+"users/login",credentials, options).pipe(
+    return this.http.post<any>(environment.urlApi+"users/login?nombre="
+    +credentials.nombre+"&contrasenia="+credentials.contrasenia, options).pipe(
       tap( (userData) => {
         console.log(userData);
-        sessionStorage.setItem("token", userData.access_token);
+        sessionStorage.setItem("access_token", userData.access_token);
         this.currentUserData.next(userData.access_token);
         this.currentUserLoginOn.next(true);
       }),

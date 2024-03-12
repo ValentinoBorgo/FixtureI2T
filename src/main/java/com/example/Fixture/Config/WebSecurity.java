@@ -51,9 +51,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
         customAthenticationFilter.setFilterProcessesUrl("/api/users/login");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(STATELESS);
+        http.authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll();
         http.authorizeRequests().antMatchers("/api/users/login/**", "/api/users/token/refresh/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/registrar/newUser").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/get").authenticated();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/getById/{id}").authenticated();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/participantes/get").authenticated();

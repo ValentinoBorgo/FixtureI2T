@@ -31,6 +31,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.example.Fixture.Service.UsuarioService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.hibernate.annotations.common.util.impl.LoggerFactory.logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -42,7 +45,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:4200"}, methods = {RequestMethod.GET, RequestMethod.OPTIONS, RequestMethod.POST})
 @RestController
 @RequestMapping(path = "/api/users")
 public class UsuarioController {
@@ -51,6 +54,9 @@ public class UsuarioController {
     //private int puerto;
     @Autowired
     private IUsuarioService usuarioService;
+    
+    
+     private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 
     @GetMapping("/get")
     public List<Usuario> getUsuarios() {
@@ -114,6 +120,7 @@ public class UsuarioController {
                 headers.add("Access-Control-Allow-Headers", "*");
                 headers.add("Access-Control-Allow-Credentials", "true");
                 System.out.println("HEADERS  :  "+headers);
+                logger.info("HEADERS: {}", headers);
                 return new ResponseEntity<>(headers, HttpStatus.OK);
             }catch(Exception e){
                 e.printStackTrace();
