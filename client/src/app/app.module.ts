@@ -10,6 +10,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from 'src/pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavComponent,
     HeaderComponent,
     FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
