@@ -5,6 +5,7 @@ import { HomeComponent } from 'src/pages/home/home.component';
 import { LoginComponent } from 'src/components/login/login.component';
 import { ClasificacionComponent } from 'src/components/clasificacion/clasificacion.component';
 import { EquiposComponent } from 'src/components/equipos/equipos.component';
+import { PartidosComponent } from 'src/components/partidos/partidos.component';
 
 const routes: Routes = [
   {path : '', redirectTo:'/login', pathMatch:'full'},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path : 'log/home', component : HomeComponent},
   {path : 'log/clasification', component : ClasificacionComponent},
   {path : 'log/teams', component : EquiposComponent},
+  {path : 'log/matches', component : PartidosComponent}
   /*
   {path : 'competencias'},
   {path : 'partidos'},

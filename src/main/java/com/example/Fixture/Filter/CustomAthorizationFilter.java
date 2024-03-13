@@ -38,7 +38,7 @@ public class CustomAthorizationFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         System.out.println("METODO DE AUTENTICACION : " + request.getMethod());
-        System.out.println("ENCABEZADO DE AUTORIZACION :  : " + request.getHeader(AUTHORIZATION));
+        System.out.println("ENCABEZADO DE AUTORIZACION :  : " + request);
         System.out.println("URL :  : " + request.getRequestURI());
 
         if (request.getMethod().equals(HttpMethod.OPTIONS.name())) {
@@ -100,5 +100,8 @@ public class CustomAthorizationFilter extends OncePerRequestFilter {
                 }
             }
         }
+        System.out.println("METODO DE AUTENTICACION : " + request.getMethod());
+        System.out.println("ENCABEZADO DE AUTORIZACION :  : " + request);
+        System.out.println("URL :  : " + request.getRequestURI());
     }
 }

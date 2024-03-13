@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from 'src/pages/home/home.component';
 import { ClasificacionComponent } from 'src/components/clasificacion/clasificacion.component';
 import { EquiposComponent } from 'src/components/equipos/equipos.component';
+import { PartidosComponent } from 'src/components/partidos/partidos.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EquiposComponent } from 'src/components/equipos/equipos.component';
     FooterComponent,
     HomeComponent,
     ClasificacionComponent,
-    EquiposComponent
+    EquiposComponent,
+    PartidosComponent
   ],
   imports: [
     BrowserModule,
