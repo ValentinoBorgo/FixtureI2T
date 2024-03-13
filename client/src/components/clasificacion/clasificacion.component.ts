@@ -5,6 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: './clasificacion.component.html',
   styleUrls: ['./clasificacion.component.css']
 })
+
 export class ClasificacionComponent {
+
+  
 
 }
