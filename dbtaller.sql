@@ -179,7 +179,7 @@ CREATE TABLE `usuario` (
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `mail` varchar(50) NOT NULL,
-  `contrasenia` varchar(30) NOT NULL,
+  `contrasenia` varchar(255) NOT NULL,
   `fecha_baja` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

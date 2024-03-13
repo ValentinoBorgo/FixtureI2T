@@ -1,0 +1,23 @@
+<h2>Equipos :</h2>
+<section class="Patients">
+  <div>
+    <table class="Tabla">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Colores</th>
+          <th>Trofeos</th>
+          <th>Fecha Baja</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let team of equipos">
+          <td>{{ team.nombre }}</td>
+          <td>{{ team.colores }}</td>
+          <td>{{ team.trofeos }}</td>
+          <td>{{ team.fecha_baja ? team.fecha_baja : 'S/D' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

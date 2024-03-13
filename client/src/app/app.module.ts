@@ -11,6 +11,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from 'src/pages/home/home.component';
+import { ClasificacionComponent } from 'src/components/clasificacion/clasificacion.component';
+import { EquiposComponent } from 'src/components/equipos/equipos.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HomeComponent } from 'src/pages/home/home.component';
     NavComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ClasificacionComponent,
+    EquiposComponent
   ],
   imports: [
     BrowserModule,

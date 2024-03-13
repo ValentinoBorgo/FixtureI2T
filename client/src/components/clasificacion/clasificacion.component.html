@@ -1,1 +1,31 @@
-<p>clasificacion works!</p>
+<h2>Clasificación :</h2>
+<section class="Patients">
+  <div>
+    <table class="Tabla">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Puntos</th>
+          <th>Partidos Ganados</th>
+          <th>Partidos Perdidos</th>
+          <th>Partidos Empatados</th>
+          <th>Goles a favor</th>
+          <th>Goles en contra</th>
+          <th>Diferencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cla of clasificacion">
+          <td>{{ cla.nombre }}</td>
+          <td>{{ cla.puntos }}</td>
+          <td>{{ cla.partidosGanados }}</td>
+          <td>{{ cla.partidosPerdidos }}</td>
+          <td>{{ cla.partidosEmpatados }}</td>
+          <td>{{ cla.golesAFavor }}</td>
+          <td>{{ cla.golesEnContra }}</td>
+          <td>{{ cla.diferencia }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
