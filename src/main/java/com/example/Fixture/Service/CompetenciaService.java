@@ -6,6 +6,7 @@ import com.example.Fixture.Repository.ICompetenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -21,6 +22,7 @@ public class CompetenciaService implements ICompetenciaService{
 
     @Override
     public Competencia guardarCompetencia(Competencia competencia) {
+        competencia.setFecha_creacion(LocalDateTime.now());
         return competenciaRepo.save(competencia);
     }
 

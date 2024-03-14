@@ -1,11 +1,14 @@
 package com.example.Fixture.Model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -16,6 +19,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     @Column(name = "nombre")
     private String nombre;
@@ -34,7 +38,11 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "autoridad_id", referencedColumnName = "id"))
     private List<Autoridad> autoridades;
 
-    public Usuario(Long id, String nombre, String apellido, String mail, String contrasenia, String fecha_baja, List<Autoridad> autoridades) {
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.PERSIST)
+    @JsonManagedReference
+    private List<Competencia> competencias = new ArrayList<>();
+
+    public Usuario(Long id, String nombre, String apellido, String mail, String contrasenia, String fecha_baja, List<Autoridad> autoridades, List<Competencia> competencias) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -42,5 +50,6 @@ public class Usuario {
         this.contrasenia = contrasenia;
         this.fecha_baja = fecha_baja;
         this.autoridades = autoridades;
+        this.competencias = competencias;
     }
 }

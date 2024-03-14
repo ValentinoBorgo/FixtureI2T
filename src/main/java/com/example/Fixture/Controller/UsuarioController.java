@@ -14,6 +14,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
+import com.example.Fixture.Dto.UsuarioDTO;
+import com.example.Fixture.Mappers.UsuarioMapper;
 import com.example.Fixture.Model.Autoridad;
 import com.example.Fixture.Model.Partido;
 import com.example.Fixture.Model.Usuario;
@@ -58,10 +60,28 @@ public class UsuarioController {
     
      private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 
-    @GetMapping("/get")
+     private final UsuarioMapper usuarioMapper = new UsuarioMapper();
+
+    //@GetMapping("/get")
     public List<Usuario> getUsuarios() {
         System.out.println("USUARIOS ENCONTRADOS-------------------------------");
         return usuarioService.getListaUsuarios();
+    }
+
+    @GetMapping("/get")
+    public ResponseEntity<List<UsuarioDTO>> getUsuariosMaped() {
+        List<Usuario> usuarios = usuarioService.getListaUsuarios();
+        List<UsuarioDTO> usuariosDTO = usuarios.stream()
+                .map(usuario -> {
+                    UsuarioDTO dto = usuarioMapper.originalToDTO(usuario); // Utilizamos el mapper para mapear el
+                                                                           // Usuario a UsuarioDTO
+                    dto.setCompetencias(usuario.getCompetencias()); // Asignamos las competencias
+                    return dto;
+                })
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok().body(usuariosDTO);
+
     }
 
     @GetMapping("/getById/{id}")
@@ -76,7 +96,7 @@ public class UsuarioController {
 
     }
 
-    @PostMapping("/registrar/newUser")
+    @PostMapping( value = "/registrar/newUser", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Usuario crearUsuario(@RequestBody Usuario usuario) {
         try {
             return usuarioService.guardarUsuario(usuario);

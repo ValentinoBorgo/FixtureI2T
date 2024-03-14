@@ -10,15 +10,4 @@ export class HomeComponent {
 
   constructor(private clasificacionService : ClasificacionServiceService){}
 
-  cla(){
-    this.clasificacionService.getClasification().subscribe(
-      clasificacion => {
-        console.log(clasificacion);
-      },
-      error => {
-        console.log("Error al obtener la clasificación : ",error);
-      }
-    )
-  }
-
 }
