@@ -20,6 +20,7 @@ export class EquiposComponent {
     this.equiposServices.getEquipos().subscribe(
       equipos => {
         this.equipos = equipos;
+        this.equiposServices.setEquipos(equipos);
       },
       error => {
         console.log("Error al obtener los equipos : ",error);

@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class EquiposService {
 
   currentUserData: BehaviorSubject<String> =new BehaviorSubject<String>("");
+  equipos: any[] = [];
 
   constructor(private http:HttpClient) { 
     this.currentUserData = new BehaviorSubject<String>(sessionStorage.getItem("access_token") || "");
@@ -26,5 +27,12 @@ export class EquiposService {
 
     return this.http.get<any>(environment.urlApi+"participantes/get", { headers })
 
+  }
+  setEquipos(equipos: any[]): void{
+    this.equipos= equipos;
+  }
+  getEquiposById(id : number): Observable<any>{
+    const headers = this.getToken();
+    return this.http.get<any>(environment.urlApi + "participantes/" + id, { headers });
   }
 }

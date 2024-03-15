@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RegisterService } from 'src/services/register/register.service';
 import { registerBody } from 'src/services/register/registerBody';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit{
    console.log("REGISTRO");
   }
 
-  constructor(private formBuilder:FormBuilder, private registerService:RegisterService){}
+  constructor(private router:Router,private formBuilder:FormBuilder, private registerService:RegisterService){}
 
 
   register(){
@@ -49,5 +49,7 @@ export class RegisterComponent implements OnInit{
       this.msgError = false;
     }
   }
-
+  moveToLogin(){
+    this.router.navigateByUrl("/login");
+  }
 }

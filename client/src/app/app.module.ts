@@ -14,7 +14,6 @@ import { HomeComponent } from 'src/pages/home/home.component';
 import { ClasificacionComponent } from 'src/components/clasificacion/clasificacion.component';
 import { EquiposComponent } from 'src/components/equipos/equipos.component';
 import { PartidosComponent } from 'src/components/partidos/partidos.component';
-import { ParticipanteComponent } from 'src/components/participante/participante.component';
 import { RegisterComponent } from 'src/components/register/register.component';
 
 @NgModule({
@@ -29,7 +28,6 @@ import { RegisterComponent } from 'src/components/register/register.component';
     ClasificacionComponent,
     EquiposComponent,
     PartidosComponent,
-    ParticipanteComponent,
     RegisterComponent
   ],
   imports: [

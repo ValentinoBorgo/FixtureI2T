@@ -6,11 +6,10 @@
 <div class="card-containerTeams">
     <div class="card" *ngFor="let matches of partidos">
             <div class="card-body">
-                <h5 class="card-titlePatido">Equipo local {{ matches.idLocal }} vs Equipo visitante {{matches.idVisitante}}</h5>
+                <h5 class="card-titlePatido">Equipo local: {{ matches.nombreEquipoLocal }} vs Equipo visitante: {{matches.nombreEquipoVisitante}}</h5>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Competencia: {{ matches.nombreCompetencia }}</li>
-                <li class="list-group-item">Competencia numero: {{ matches.idCompetencia }}</li>
                 <li class="list-group-item">Partido numero: {{ matches.id }}</li>
                 <li class="list-group-item">Fecha del partido: {{ matches.fecha_realizacion }}</li>
                 <li class="list-group-item">Resultado {{ matches.golesLocal }}-{{ matches.golesVisitante }}</li>
