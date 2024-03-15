@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class CompetenciaServiceService {
 
   currentUserData: BehaviorSubject<String> =new BehaviorSubject<String>("");
+  competencias: any[] = [];
 
   constructor(private http:HttpClient) { 
     this.currentUserData = new BehaviorSubject<String>(sessionStorage.getItem("access_token") || "");
@@ -25,10 +26,12 @@ export class CompetenciaServiceService {
 
     return this.http.get<any>(environment.urlApi+"competencias/get", { headers })
 }
-  getNombreIdCompetencia(): Observable<{ id: string, nombre: string }[]> {
-  const headers = this.getToken();
-  return this.http.get<any[]>(environment.urlApi + "competencias/get", { headers }).pipe(
-      map(competencias => competencias.map(({ id, nombre }) => ({ id, nombre })))
-  );
-}
+  setCompetencias(competencias: any[]): void {
+    this.competencias=competencias;
+  }
+
+  getCompetenciaById(id: number): Observable<any> {
+    const headers = this.getToken();
+    return this.http.get<any>(environment.urlApi + "competencias/" + id, { headers });
+  }
 }
