@@ -2,9 +2,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around; 
+    margin-left: 300px;
 }
 
 .card {
     width: calc(33.33% - 20px); 
     margin: 10px; 
+}
+
+h2{
+    margin-left: 360px;
 }

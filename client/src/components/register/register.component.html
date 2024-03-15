@@ -1,0 +1,76 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center; /* Centra el contenido del cuerpo */
+    }
+
+    form {
+        width: 300px; /* Ancho del formulario */
+        margin: 0 auto; /* Centra el formulario horizontalmente */
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    form div {
+        margin-bottom: 10px; /* Espacio entre los campos */
+    }
+
+    label {
+        display: inline-block;
+        width: 120px; /* Ancho de las etiquetas */
+        text-align: left; /* Alinea el texto de las etiquetas a la izquierda */
+    }
+
+    input {
+        width: 180px; /* Ancho de los campos de entrada */
+        padding: 5px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        box-sizing: border-box; /* Hace que el ancho incluya el relleno y el borde */
+    }
+</style>
+
+<body>
+
+<h2>Formulario de Registro</h2>
+
+<div *ngIf="msgError === true">
+    <p style="color: green;">Registro realizado efectivamente</p>
+</div>
+
+<div *ngIf="msgError === false">
+    <p style="color: red;">Registro fallido, vuelva a intentarlo</p>
+</div>
+
+<form [formGroup]="registerForm">
+<div>
+  <label for="nombre">Nombre:</label>
+  <input formControlName ="nombre" type="text" id="nombre" name="nombre" required>
+</div>
+
+<div>
+  <label for="apellido">Apellido:</label>
+  <input formControlName ="apellido" type="text" id="apellido" name="apellido" required>
+</div>
+
+<div>
+  <label for="email">Email:</label>
+  <input formControlName ="mail" type="email" id="email" name="email" required>
+</div>
+
+<div>
+  <label for="contrasena">Contraseña:</label>
+  <input formControlName ="contrasenia" type="password" id="contraseña" name="contrasena" required>
+</div>
+
+<div>
+  <label for="fechaCaducidad">Fecha de Caducidad:</label>
+  <input formControlName ="fecha_baja" type="date" id="fechaCaducidad" name="fechaCaducidad" required>
+</div>
+
+<button (click)="register()" class="btn btn-primary">Registrarse</button>
+</form>
+
+</body>
