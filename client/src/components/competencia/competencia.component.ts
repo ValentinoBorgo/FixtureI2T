@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CompetenciaServiceService } from 'src/services/competencia/competencia-service.service';
 
 @Component({
   selector: 'app-competencia',
@@ -7,5 +8,21 @@ import { Component } from '@angular/core';
 })
 
 export class CompetenciaComponent {
-  
+  competencias: any[] = [];
+  constructor(private competenciaService : CompetenciaServiceService){}
+
+  ngOnInit(){
+    this.competitions();
+  }
+
+  competitions(){
+    this.competenciaService.getCompetencia().subscribe(
+      competencias => {
+        this.competencias = competencias;
+      },
+      error => {
+        console.log("Error al obtener los equipos : ",error);
+      }
+    )
+  }
 }

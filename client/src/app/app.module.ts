@@ -14,6 +14,7 @@ import { HomeComponent } from 'src/pages/home/home.component';
 import { ClasificacionComponent } from 'src/components/clasificacion/clasificacion.component';
 import { EquiposComponent } from 'src/components/equipos/equipos.component';
 import { PartidosComponent } from 'src/components/partidos/partidos.component';
+import { ParticipanteComponent } from 'src/components/participante/participante.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PartidosComponent } from 'src/components/partidos/partidos.component';
     HomeComponent,
     ClasificacionComponent,
     EquiposComponent,
-    PartidosComponent
+    PartidosComponent,
+    ParticipanteComponent
   ],
   imports: [
     BrowserModule,

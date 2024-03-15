@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CompetenciaServiceService } from 'src/services/competencia/competencia-service.service';
 import { EquiposService } from 'src/services/equipos/equipos.service';
 import { PartidosServiceService } from 'src/services/partidos/partidos-service.service';
 @Component({
@@ -8,14 +9,15 @@ import { PartidosServiceService } from 'src/services/partidos/partidos-service.s
 })
 export class PartidosComponent {
   partidos: any[] = [];
+  competenciasMap: { [key: number]: string } = {};
 
-  constructor(private partidosServices : PartidosServiceService){}
+  constructor(private competenciaService: CompetenciaServiceService,private partidosServices : PartidosServiceService){}
 
   ngOnInit(){
-    this.teams();
+    this.matches();
   }
 
-  teams(){
+  matches(){
     this.partidosServices.getPartidos().subscribe(
       partidos => {
         this.partidos = partidos;
