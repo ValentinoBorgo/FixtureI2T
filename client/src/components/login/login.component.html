@@ -1,20 +1,28 @@
-    <div>
-        <h2>Login</h2>
+    <div class="divs">
+        <div>
+            <h2>Login</h2>
+        </div>
         <form [formGroup]="loginForm">
-            <label for="nombre">Usuario : </label>
+            <div>
+                <label for="nombre">Usuario : </label>
             <br>
             <input formControlName="nombre" type="text" id="nombre" name="nombre" required>
             <br>
             <br>
-            <label for="contrasenia">Contraseña : </label>
+            </div>
+            <div>
+                <label for="contrasenia">Contraseña : </label>
             <br>
             <input formControlName="contrasenia" type="password" id="contrasenia" name="contrasenia" required>
             <br>
             <br>
+            </div>
             <div *ngIf="msgError">
                 <p style="color: red;">Nombre o Contraseña incorrecto, vuelva a intentarlo !</p>
               </div>
-            <button (click)="moveToRegister()" class="btn btn-success">Registrarme</button>
+              <div id="btns">
+                <button (click)="moveToRegister()" class="btn btn-success">Registrarme</button>
             <button (click)="login()" type="button" style="margin: 1rem;" class="btn btn-primary">Iniciar sesión</button>
+              </div>
         </form>
     </div>

@@ -5,7 +5,7 @@
     overflow-y: auto;
     position: fixed;
     left: 0;
-    top: -1rem;
+    top: -2rem;
     bottom: 0;
     transition: 0.4s;
     z-index: 99;
