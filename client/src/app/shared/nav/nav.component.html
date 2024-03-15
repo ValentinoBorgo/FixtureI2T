@@ -1,11 +1,22 @@
 <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li routerLinkActive="active"><a routerLink="/log/home">Home</a></li>
-        <li routerLinkActive="active"><a href="#">Competencias</a></li>
-        <li routerLinkActive="active"><a routerLink="/log/teams">Equipos</a></li>
-        <li routerLinkActive="active"><a routerLink="/log/matches">Partidos</a></li>
-        <li routerLinkActive="active"><a routerLink="/log/clasification">Clasificacion</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <button class="btn btn-danger">Cerrar Sesión</button>
+      <li [ngClass]="{'active': activeNavItem === 'home'}">
+        <a (click)="active('home')" routerLinkActive="active" routerLink="/log/home" class="anchor">Home</a>
+      </li>
+      <li [ngClass]="{'active': activeNavItem === 'inicio'}">
+        <a (click)="active('inicio')" routerLinkActive="active" href="#" class="anchor">Competencias</a>
+      </li>
+      <li [ngClass]="{'active': activeNavItem === 'teams'}">
+        <a (click)="active('teams')" routerLinkActive="active" routerLink="/log/teams" class="anchor">Equipos</a>
+      </li>
+      <li [ngClass]="{'active': activeNavItem === 'matches'}">
+        <a (click)="active('matches')" routerLinkActive="active" routerLink="/log/matches" class="anchor">Partidos</a>
+      </li>
+      <li [ngClass]="{'active': activeNavItem === 'clasification'}">
+        <a (click)="active('clasification')" routerLinkActive="active" routerLink="/log/clasification" class="anchor">Clasificacion</a>
+      </li>
+    </ul>
+  </div>
+</nav>

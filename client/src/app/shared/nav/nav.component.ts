@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class NavComponent {
 
+  activeNavItem:string | null = null;
+
+  active(NavItem:string){
+    this.activeNavItem = NavItem;
+    console.log(this.activeNavItem);
+  }
+
 }

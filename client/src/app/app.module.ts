@@ -15,6 +15,7 @@ import { ClasificacionComponent } from 'src/components/clasificacion/clasificaci
 import { EquiposComponent } from 'src/components/equipos/equipos.component';
 import { PartidosComponent } from 'src/components/partidos/partidos.component';
 import { ParticipanteComponent } from 'src/components/participante/participante.component';
+import { RegisterComponent } from 'src/components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ParticipanteComponent } from 'src/components/participante/participante.
     ClasificacionComponent,
     EquiposComponent,
     PartidosComponent,
-    ParticipanteComponent
+    ParticipanteComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

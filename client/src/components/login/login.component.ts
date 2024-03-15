@@ -12,6 +12,8 @@ import { LoginserviceService } from 'src/services/auth/loginservice.service';
 
 export class LoginComponent implements OnInit{
 
+  msgError: boolean = false;
+
   loginError:string="";
   loginForm = this.formBuilder.group({
     nombre:['',Validators.required],
@@ -21,18 +23,23 @@ export class LoginComponent implements OnInit{
   constructor(private formBuilder:FormBuilder, private router:Router, private loginService: LoginserviceService) { }
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
+  }
+
+  moveToRegister(){
+    this.router.navigateByUrl("/register");
   }
 
   login(){
     console.log(this.loginForm);
-    if(this.loginForm.value.nombre != null && this.loginForm.value.contrasenia != null){
+    if(this.loginForm.valid){
       this.loginError="";
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (userData) => {
           console.log(userData);
         },
         error: (errorData) => {
+          this.msgError = true;
           console.log(errorData);
           this.loginError = errorData;
         },
@@ -43,8 +50,9 @@ export class LoginComponent implements OnInit{
         }
       })
     }else{
+      this.msgError = true;
       this.loginForm.markAllAsTouched();
-      alert("Error al ingresar los datos");
+      alert("Ingrese los datos de los 2 campos");
     }
   }
 
