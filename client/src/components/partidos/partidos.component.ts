@@ -10,11 +10,11 @@ import { PartidosServiceService } from 'src/services/partidos/partidos-service.s
 export class PartidosComponent {
   partidos: any[] = [];
   
-  competenciasMap: { [key: number]: string } = {};
 
   constructor(
     private competenciaService: CompetenciaServiceService,
-    private partidosServices : PartidosServiceService
+    private partidosServices : PartidosServiceService,
+    private equiposServices : EquiposService
   ){}
 
   ngOnInit(){
@@ -26,6 +26,7 @@ export class PartidosComponent {
       partidos => {
         this.partidos = partidos;
         this.cargarNombreCompetencias();
+        this.cargarNombreEquipos();
         console.log(partidos)
       },
       error => {
@@ -35,15 +36,37 @@ export class PartidosComponent {
   }
 
   cargarNombreCompetencias() {
-    // Iteramos sobre cada partido
+    // Itero sobre cada partido
     for (let partido of this.partidos) {
-      // Obtenemos el nombre de la competencia para este partido
+      // Obtiene el nombre de la competencia para este partido
       this.competenciaService.getCompetenciaById(partido.idCompetencia).subscribe(
         (competencia : any) => {
           partido.nombreCompetencia = competencia.nombre;
         },
         (error : any) => {
           console.log("Error al obtener la competencia: ", error);
+        }
+      );
+    }
+  }
+  cargarNombreEquipos(){
+    //itero sobre cada partido
+    for(let partido of this.partidos){
+      //Obtiene el nombre de los equipos para cada partido
+      this.equiposServices.getEquiposById(partido.idLocal).subscribe(
+        (equipos : any) => {
+          partido.nombreEquipoLocal = equipos.nombre;
+        },
+        (error : any) => {
+          console.log("Error al obtener el nombre del equipo: ", error);
+        }
+      );
+      this.equiposServices.getEquiposById(partido.idVisitante).subscribe(
+        (equipos : any) => {;
+          partido.nombreEquipoVisitante = equipos.nombre;
+        },
+        (error : any) => {
+          console.log("Error al obtener el nombre del equipo: ", error);
         }
       );
     }
