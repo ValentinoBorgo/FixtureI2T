@@ -1,5 +1,4 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -8,22 +7,20 @@ import { ActivatedRoute, NavigationEnd, Route, Router } from '@angular/router';
 })
 export class FooterComponent {
 
-  constructor(private route:Router, private elementRef: ElementRef, private renderer: Renderer2){}
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
-  ngOnInit(){
-    this.route.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        const currentPageUrl = this.route.url;
-        console.log(currentPageUrl);
-        // Ahora puedes usar currentPageUrl como desees, por ejemplo, para aplicar estilos
-        if (currentPageUrl === '/login') {
-          const footerElement = this.elementRef.nativeElement.querySelector('footer');
-          this.renderer.setStyle(footerElement, 'margin-left', '0');
-        }else{
-          const footerElement = this.elementRef.nativeElement.querySelector('footer');
-          this.renderer.setStyle(footerElement, 'margin-left', '282');
-        }
-      }
-    });
-  }
-  }
+  /*
+  ngOnInit() {
+    // Accede al elemento app-footer
+    const footerElement = this.elementRef.nativeElement.querySelector('footer');
+
+    // Obtén el valor actual del margen izquierdo
+    const currentMarginLeft = footerElement.style.marginLeft;
+
+    // Si el margen izquierdo está vacío o no está definido
+    if (currentMarginLeft === "" || currentMarginLeft === "0px") {
+      // Establece el margen izquierdo en 282px
+      this.renderer.setStyle(footerElement, 'margin-left', '282px');
+    }
+  }*/
+}
