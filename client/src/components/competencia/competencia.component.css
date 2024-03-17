@@ -1,41 +1,15 @@
-h2{
-    margin-left : 330px ;
-    margin-top : 50px;
-    width : 13%;
-    text-decoration: underline;
-}
-
-.Agregar{
-    margin-left : 330px ;
-    margin-top : 50px;
-    font-size: larger;
-}
-
-.Patients{
-    width: 50%;
-    margin-left : 330px ;
-    margin-top : 100px;
+.card-containerCompetitions {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    margin-left: 300px;
 }
 
-.Tabla{
-    width: 200%;
-    font-size: medium;
-    border: 1px solid black;
+.card {
+    width: calc(33.33% - 20px); 
+    margin: 10px; 
 }
 
-.Tabla th{
-    text-align: center;
-    vertical-align: middle;
-    padding: 2px;
-    border: 1px black solid;
-}
-
-.error{
-    margin-left : 330px ;
-    margin-top : 50px;
-    width : 13%;
-    text-decoration: underline;
+h2{
+    margin-left: 360px;
 }

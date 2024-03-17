@@ -1,28 +1,21 @@
 <app-nav></app-nav>
-<p>competencia works!</p>
-
-<h2>Competencias : </h2>
-        <section class ="Patients">
-            <div>
-                <table class ="Tabla">
-                    <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Estado</th>
-                        <th>Fecha Baja</th>
-                        <th>Fecha Inicio</th>
-                        <th>Fecha Creación</th>
-                        <th>Usuario Responsable</th>
-                    </tr>
-                            <tr>
-                                <th>lol</th>
-                                <th>lel</th>
-                                <th>lil</th>
-                                <th>lal</th>
-                                <th><button class="btn btn-outline-warning">*</button></th>
-                                <th><button class="btn btn-danger">X</button></th>
-                            </tr>
-                    </thead>
-                </table>
+<body>
+<h2>Competencias: </h2>
+<br>
+<hr>
+<br>
+<div class="card-containerCompetitions">
+    <div class="card" *ngFor="let competitions of competencias">
+            <div class="card-body">
+                <h5 class="card-titleCompetitions">Nombre: {{ competitions.nombre }}</h5>
             </div>
-        </section>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Fecha de Creacion: {{ competitions.fecha_creacion }}</li>
+                <li class="list-group-item">Fecha Inicio: {{ competitions.fecha_inicio }}</li>
+            </ul>
+    </div>
+</div>
+<br>
+<hr>
+<br>
+</body>

@@ -20,6 +20,7 @@ export class CompetenciaComponent {
       competencias => {
         this.competencias = competencias;
         this.competenciaService.setCompetencias(competencias);
+        console.log(competencias);
       },
       error => {
         console.log("Error al obtener los equipos : ",error);

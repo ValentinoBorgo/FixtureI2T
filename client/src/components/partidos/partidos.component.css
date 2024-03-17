@@ -1,3 +1,8 @@
+body {
+    position: relative;
+    margin: 0;  
+}
+
 .card-containerTeams {
     display: flex;
     flex-wrap: wrap;
