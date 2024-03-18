@@ -1,4 +1,5 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,9 @@ export class AppComponent {
 
   @ViewChild('app-footer') appFooter!: ElementRef;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private router:Router) {}
 
+  /*
   ngAfterViewInit() {
     // Acceder al elemento app-footer
     const footerElement = this.appFooter.nativeElement;
@@ -27,4 +29,11 @@ export class AppComponent {
     // Realizar operaciones en el elemento innerElement, como ajustar el estilo
     this.renderer.setStyle(innerElement, 'margin-left', '0px');
   }
+  */
+
+  viewRoute(): boolean {
+    // Verifica si la URL actual coincide con la ruta específica
+    return this.router.url === '/login';
+  }
+
 }

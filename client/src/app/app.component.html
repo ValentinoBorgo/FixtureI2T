@@ -8,4 +8,91 @@
 <!--<app-competencia></app-competencia>-->
 
 <!--<app-nav></app-nav>-->
-<app-footer></app-footer>
+
+<router-outlet></router-outlet>
+
+<ng-container *ngIf="viewRoute(); else otraPlantilla">
+    <app-footer></app-footer>
+  </ng-container>
+  
+  <ng-template #otraPlantilla>
+
+    <footer class="footer">
+        <div class="footer-section">
+            <h2 class="footer-heading">Sobre nosotros</h2>
+            <p>Somos la Liga de Fútbol, dedicada a promover y organizar competiciones de fútbol.</p>
+        </div>
+      
+        <div class="footer-section">
+            <h2 class="footer-heading">Contacto</h2>
+            <p><strong>Correo electrónico:</strong> info@ligadefutbol.com</p>
+            <p><strong>Teléfono:</strong> +123 456 789</p>
+        </div>
+      
+        <div class="footer-section">
+            <h2 class="footer-heading">Síguenos en redes sociales</h2>
+            <ul class="social-links">
+                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </div>
+      
+        <div class="footer-section">
+            <p class="copyright">&copy; 2024 Liga de Fútbol. Todos los derechos reservados.</p>
+        </div>
+      </footer>
+      
+      <style>
+        .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-left: 190px;
+}
+
+.footer-section {
+    flex: 1;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.footer-heading {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-links li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-links li a {
+    color: #fff;
+    font-size: 1.5em;
+    transition: color 0.3s;
+}
+
+.social-links li a:hover {
+    color: #ffca28;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 20px;
+}
+
+      </style>
+  </ng-template>
+
+  
+<!--<app-footer></app-footer>-->
