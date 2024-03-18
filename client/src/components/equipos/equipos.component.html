@@ -1,32 +1,23 @@
 <app-nav></app-nav>
-<h2>Equipos :</h2>
+<body>
+<h2>Equipos: </h2>
 <br>
 <hr>
 <br>
-<div>
-  <section>
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Colores</th>
-            <th>Trofeos</th>
-            <th>Fecha Baja</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let team of equipos">
-            <td>{{ team.nombre }}</td>
-            <td>{{ team.colores }}</td>
-            <td>{{ team.trofeos }}</td>
-            <td>{{ team.fecha_baja ? team.fecha_baja : 'S/D' }}</td>
-          </tr>
-        </tbody>
-      </table>
+<div class="card-containerTeams">
+    <div class="card" *ngFor="let team of equipos">
+            <div class="card-body">
+                <h5 class="card-titleTeams">Nombre: {{ team.nombre }}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Colores: {{ team.colores }}</li>
+                <li class="list-group-item">Trofeos:{{ team.trofeos }}</li>
+                <li class="list-group-item">Fecha baja: {{ team.fecha_baja ? team.fecha_baja : 'S/D' }}</li>
+
+            </ul>
     </div>
-  </section>
 </div>
 <br>
 <hr>
 <br>
+</body>
