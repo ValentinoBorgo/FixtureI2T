@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit{
     console.log(this.loginForm);
     if(this.loginForm.valid){
       this.loginError="";
+      this.loginService.setUser(this.loginForm.value.nombre);
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (userData) => {
           console.log(userData);

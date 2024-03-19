@@ -1,6 +1,6 @@
-
 <body>
 <h2>Formulario de Registro</h2>
+<br>
 
 <div *ngIf="msgError === true">
     <p style="color: green;">Registro realizado efectivamente</p>
@@ -13,33 +13,29 @@
 <form [formGroup]="registerForm">
 <div>
   <label for="nombre">Nombre:</label>
-  <input formControlName ="nombre" type="text" id="nombre" name="nombre" required>
 </div>
-
+<input formControlName ="nombre" type="text" id="nombre" name="nombre" required>
 <div>
   <label for="apellido">Apellido:</label>
-  <input formControlName ="apellido" type="text" id="apellido" name="apellido" required>
 </div>
-
+<input formControlName ="apellido" type="text" id="apellido" name="apellido" required>
 <div>
   <label for="email">Email:</label>
-  <input formControlName ="mail" type="email" id="email" name="email" required>
 </div>
-
+<input formControlName ="mail" type="email" id="email" name="email" required>
 <div>
   <label for="contrasena">Contraseña:</label>
-  <input formControlName ="contrasenia" type="password" id="contraseña" name="contrasena" required>
 </div>
-
+<input formControlName ="contrasenia" type="password" id="contraseña" name="contrasena" required>
 <div>
   <label for="fechaCaducidad">Fecha de Caducidad:</label>
-  <input formControlName ="fecha_baja" type="date" id="fechaCaducidad" name="fechaCaducidad" required>
 </div>
-<div>
-<button (click)="register()" class="btn btn-primary">Registrarse</button>
+<input formControlName ="fecha_baja" type="date" id="fechaCaducidad" name="fechaCaducidad" required>
+<div style="margin-top: 2rem;">
+  <button (click)="register()" class="btn btn-primary">Registrarse</button>
 </div>
-<div>
-<button (click)="moveToLogin()" class="btn btn-primary">Volver</button>
+<div style="margin-top: 2rem;">
+  <button (click)="moveToLogin()" class="btn btn-primary">Volver</button>
 </div>
 </form>
 

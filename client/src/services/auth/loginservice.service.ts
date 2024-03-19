@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginserviceService {
 
+  private user:any = "";
+
   //Es un objeto que mantiene el valor actual y lo emite cuando es necesario
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   currentUserData: BehaviorSubject<String> =new BehaviorSubject<String>("");
@@ -53,6 +55,14 @@ export class LoginserviceService {
       console.error('Backend retornó el código de estado ', error);
     }
     return throwError(()=> new Error('Algo falló. Por favor intente nuevamente.'));
+  }
+
+  setUser(user: any){
+    this.user = user;
+  }
+
+  getUser():any{
+    return this.user;
   }
 
 }

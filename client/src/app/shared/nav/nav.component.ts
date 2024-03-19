@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginComponent } from 'src/components/login/login.component';
+import { LoginserviceService } from 'src/services/auth/loginservice.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,10 +10,17 @@ import { Router } from '@angular/router';
 })
 export class NavComponent {
 
+  nombre:any = "";
 
-  constructor(private router:Router){}
+
+  constructor(private router:Router, private user:LoginserviceService){}
 
   activeNavItem:string | null = null;
+
+  ngDoCheck(): void{
+    this.nombre = this.user.getUser();
+    console.log(this.nombre);
+  }
 
   active(NavItem:string){
     this.activeNavItem = NavItem;
