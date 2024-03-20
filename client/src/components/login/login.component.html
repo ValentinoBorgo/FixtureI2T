@@ -5,22 +5,22 @@
         <form [formGroup]="loginForm">
             <mat-form-field class="example-full-width">
                 <mat-label>Usuario</mat-label>
-                <input style="height: 40px;" matInput formControlName="nombre" type="text" id="nombre" name="nombre" required>
+                <input matInput formControlName="nombre" type="text" id="nombre" name="nombre" required>
             </mat-form-field>
 
             <br>
             
             <mat-form-field class="example-full-width">
                 <mat-label>Contraseña</mat-label>
-                <input style="height: 40px;" matInput formControlName="contrasenia" type="password" id="contrasenia" name="contrasenia" required>
+                <input matInput formControlName="contrasenia" type="password" id="contrasenia" name="contrasenia" required>
             </mat-form-field>
             
             <div *ngIf="msgError">
                 <p style="color: red;">Nombre o Contraseña incorrecto, vuelva a intentarlo !</p>
               </div>
               <div id="btns">
-                <button (click)="moveToRegister()" class="btn btn-success">Registrarme</button>
-            <button (click)="login()" type="button" style="margin: 1rem;" class="btn btn-primary">Iniciar sesión</button>
+                <button (click)="moveToRegister()" mat-raised-button style="background-color: green; color: white;">Registrarme</button>
+                <button (click)="login()" style="margin: 1rem;" mat-raised-button color="primary">Iniciar Sesión</button>
               </div>
         </form>
     </div>
