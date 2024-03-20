@@ -12,6 +12,8 @@ import { LoginserviceService } from 'src/services/auth/loginservice.service';
 
 export class LoginComponent implements OnInit{
 
+  //HACER UN FAKE LOADING CON UN SPINNER
+
   msgError: boolean = false;
 
   loginError:string="";

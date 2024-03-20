@@ -17,18 +17,6 @@ form {
     background-color: #f9f9f9;
 }
 
-label {
-    display: block;
-    text-align: left;
-}
-
-input {
-    width: 400px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
 .error-msg {
     color: red;
     text-align: center;
@@ -43,3 +31,4 @@ input {
 button {
     border-radius: 5px;
 }
+

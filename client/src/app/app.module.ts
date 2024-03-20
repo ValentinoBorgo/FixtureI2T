@@ -15,6 +15,13 @@ import { ClasificacionComponent } from 'src/components/clasificacion/clasificaci
 import { EquiposComponent } from 'src/components/equipos/equipos.component';
 import { PartidosComponent } from 'src/components/partidos/partidos.component';
 import { RegisterComponent } from 'src/components/register/register.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+
+//https://material.angular.io/components/form-field/examples
+//DOC DE MATERIAL
 
 @NgModule({
   declarations: [
@@ -28,13 +35,17 @@ import { RegisterComponent } from 'src/components/register/register.component';
     ClasificacionComponent,
     EquiposComponent,
     PartidosComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
