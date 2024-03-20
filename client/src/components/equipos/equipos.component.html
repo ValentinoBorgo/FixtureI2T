@@ -5,15 +5,18 @@
 <br>
 <div class="card-containerTeams">
     <div class="card" *ngFor="let team of equipos">
-            <div class="card-body">
-                <h5 class="card-titleTeams">Nombre: {{ team.nombre }}</h5>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Colores: {{ team.colores }}</li>
-                <li class="list-group-item">Trofeos:{{ team.trofeos }}</li>
-                <li class="list-group-item">Fecha baja: {{ team.fecha_baja ? team.fecha_baja : 'S/D' }}</li>
 
-            </ul>
+        <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Nombre : {{ team.nombre }}</mat-card-title>
+            </mat-card-header>
+            <mat-card>
+                <mat-card-content>Colores : {{ team.colores }}</mat-card-content>
+                <mat-card-content>Trofeos : {{ team.trofeos }}</mat-card-content>
+                <mat-card-content>Fecha baja : {{ team.fecha_baja ? team.fecha_baja : 'S/D' }}</mat-card-content>
+              </mat-card>              
+          </mat-card>
+
     </div>
 </div>
 <br>

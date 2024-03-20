@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit{
 
   msgError: boolean = false;
 
+  spinner: boolean = false;
+
   loginError:string="";
   loginForm = this.formBuilder.group({
     nombre:['',Validators.required],
@@ -28,6 +30,12 @@ export class LoginComponent implements OnInit{
     
   }
 
+  progress(){
+    setTimeout(() => {
+      this.spinner = false;
+    }, 2000);
+  }
+
   moveToRegister(){
     this.router.navigateByUrl("/register");
   }
@@ -37,8 +45,10 @@ export class LoginComponent implements OnInit{
     if(this.loginForm.valid){
       this.loginError="";
       this.loginService.setUser(this.loginForm.value.nombre);
+      this.spinner = true;
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (userData) => {
+          this.progress();
           console.log(userData);
         },
         error: (errorData) => {

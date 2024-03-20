@@ -20,15 +20,12 @@
         display: flex;
     }
 
-    label {
-        width: 120px; /* Ancho de las etiquetas */
+    .title-btns{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    input {
-        width: 250px;
-        height: 60%;
-        padding: 5px;
-        border-radius: 3px;
-        border: 1px solid #ccc;
-        box-sizing: border-box; /* Hace que el ancho incluya el relleno y el borde */
-    }
+    .example-full-width {
+        width: 100%; /* Ancho del input al 100% del contenedor */
+      }

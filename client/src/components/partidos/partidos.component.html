@@ -5,15 +5,23 @@
 <br>
 <div class="card-containerTeams">
     <div class="card" *ngFor="let matches of partidos">
-            <div class="card-body">
-                <h5 class="card-titlePatido">Equipo local: {{ matches.nombreEquipoLocal }} vs Equipo visitante: {{matches.nombreEquipoVisitante}}</h5>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Competencia: {{ matches.nombreCompetencia }}</li>
-                <li class="list-group-item" style="color: red; font-weight: bold;">Partido numero: {{ matches.id }}</li>
-                <li class="list-group-item">Fecha del partido: {{ matches.fecha_realizacion }}</li>
-                <li class="list-group-item">Resultado {{ matches.golesLocal }}-{{ matches.golesVisitante }}</li>
-            </ul>
+
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div style="display: flex; justify-content: space-between; gap: 20px;">
+                    <mat-card-title>Equipo local  {{ matches.nombreEquipoLocal }}</mat-card-title>
+                    <mat-card-title style="color: blue; font-weight: bold;"> VS </mat-card-title>
+                    <mat-card-title>Equipo visitante  {{matches.nombreEquipoVisitante}}</mat-card-title>
+                </div>
+            </mat-card-header>
+            <mat-card>
+                <mat-card-content>Competencia: {{ matches.nombreCompetencia }}</mat-card-content>
+                <mat-card-content style="color: red; font-weight: bold;" >Partido numero: {{ matches.id }}</mat-card-content>
+                <mat-card-content>Fecha del partido: {{ matches.fecha_realizacion }}</mat-card-content>
+                <mat-card-content>Resultado {{ matches.golesLocal }}-{{ matches.golesVisitante }}</mat-card-content>
+              </mat-card>              
+          </mat-card>
+
     </div>
 </div>
 <br>

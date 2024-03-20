@@ -18,8 +18,12 @@ export class NavComponent {
   activeNavItem:string | null = null;
 
   ngDoCheck(): void{
-    this.nombre = this.user.getUser();
-    console.log(this.nombre);
+    if(this.user.getUser() != null && this.user.getUser() != ""){
+      this.setNombre(this.user.getUser());
+      sessionStorage.setItem("user", this.user.getUser());
+    }else{
+      this.setNombre(sessionStorage.getItem("user"));
+    }
   }
 
   active(NavItem:string){
@@ -32,4 +36,11 @@ export class NavComponent {
     this.router.navigateByUrl('/login');
   }
 
+  setNombre(nombre : any){
+    this.nombre = nombre;
+  }
+
+  getNombre():any{
+    return this.nombre;
+  }
 }

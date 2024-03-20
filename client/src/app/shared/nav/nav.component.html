@@ -1,27 +1,21 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li style="list-style: none;">
-        <img src="../../../assets/round-account-button-with-user-inside_icon-icons.com_72596.svg" 
-        alt="usuario.svg"
-        style="width: 30%;">
-        <a>{{ nombre }}</a>
-      </li>
-      <li [ngClass]="{'active': activeNavItem === 'home'}">
-        <a (click)="active('home')" routerLinkActive="active" routerLink="/log/home" class="anchor">Home</a>
-      </li>
-      <li [ngClass]="{'active': activeNavItem === 'competition'}">
-        <a (click)="active('competition')" routerLinkActive="active" routerLink="/log/competition" class="anchor">Competencias</a>
-      </li>
-      <li [ngClass]="{'active': activeNavItem === 'teams'}">
-        <a (click)="active('teams')" routerLinkActive="active" routerLink="/log/teams" class="anchor">Equipos</a>
-      </li>
-      <li [ngClass]="{'active': activeNavItem === 'matches'}">
-        <a (click)="active('matches')" routerLinkActive="active" routerLink="/log/matches" class="anchor">Partidos</a>
-      </li>
-      <li [ngClass]="{'active': activeNavItem === 'clasification'}">
-        <a (click)="active('clasification')" routerLinkActive="active" routerLink="/log/clasification" class="anchor">Clasificacion</a>
-      </li>
+      <div>
+        <li style="list-style: none;">
+          <img src="../../../assets/round-account-button-with-user-inside_icon-icons.com_72596.svg" 
+          alt="usuario.svg"
+          style="width: 20%; vertical-align: middle;">
+          <a style="margin-left: 0.5rem;">{{ getNombre() }}</a>
+        </li>
+      </div>
+      <mat-nav-list>
+        <a class="ancorNav" mat-list-item [routerLink]="['/log/home']" routerLinkActive="active" (click)="active('home')">Home</a>
+        <a class="ancorNav" mat-list-item [routerLink]="['/log/competition']" routerLinkActive="active" (click)="active('competition')">Competencias</a>
+        <a class="ancorNav" mat-list-item [routerLink]="['/log/teams']" routerLinkActive="active" (click)="active('teams')">Equipos</a>
+        <a class="ancorNav" mat-list-item [routerLink]="['/log/matches']" routerLinkActive="active" (click)="active('matches')">Partidos</a>
+        <a class="ancorNav" mat-list-item [routerLink]="['/log/clasification']" routerLinkActive="active" (click)="active('clasification')">Clasificacion</a>
+      </mat-nav-list>
       <br>
       <button mat-raised-button color="warn" (click)="logout()">Cerrar Sesión</button>
     </ul>

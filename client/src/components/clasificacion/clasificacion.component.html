@@ -5,18 +5,20 @@
 <br>
 <div class="card-containerClasifications">
     <div class="card" *ngFor="let cla of clasificacion">
-            <div class="card-body">
-                <h5 class="card-titleClasifications">Nombre: {{ cla.nombre }}</h5>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item" style="color: red; font-weight: bold;">Puntos: {{ cla.puntos }}</li>
-                <li class="list-group-item">Partidos ganados: {{ cla.partidosGanados }}</li>
-                <li class="list-group-item">Partidos perdidos: {{ cla.partidosPerdidos }}</li>
-                <li class="list-group-item">Partidos empatados: {{ cla.partidosEmpatados }}</li>
-                <li class="list-group-item">Goles a favor: {{ cla.golesAFavor }}</li>
-                <li class="list-group-item">Goles en contra: {{ cla.golesEnContra }}</li>
-                <li class="list-group-item">Diferencia de goles: {{ cla.diferencia }}</li>
-            </ul>
+        <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Nombre: {{ cla.nombre }}</mat-card-title>
+            </mat-card-header>
+            <mat-card>
+                <mat-card-content style="color: red; font-weight: bold;">Puntos: {{ cla.puntos }}</mat-card-content>
+                <mat-card-content>Partidos ganados: {{ cla.partidosGanados }}</mat-card-content>
+                <mat-card-content>Partidos perdidos: {{ cla.partidosPerdidos }}</mat-card-content>
+                <mat-card-content>Partidos empatados: {{ cla.partidosEmpatados }}</mat-card-content>
+                <mat-card-content>Goles a favor: {{ cla.golesAFavor }}</mat-card-content>
+                <mat-card-content>Goles en contra: {{ cla.golesEnContra }}</mat-card-content>
+                <mat-card-content>Diferencia de goles: {{ cla.diferencia }}</mat-card-content>
+              </mat-card>              
+          </mat-card>
     </div>
 </div>
 <br>

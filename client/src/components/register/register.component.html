@@ -1,39 +1,50 @@
-<h2>Formulario de Registro</h2>
+<br>
+<div class="title-btns">
+  <h2>Formulario de Registro</h2>
+</div>
+
 <br>
 
-<div *ngIf="msgError === true">
+<div *ngIf="msgError === true" class="title-btns">
     <p style="color: green;">Registro realizado efectivamente</p>
 </div>
 
-<div *ngIf="msgError === false">
+<div *ngIf="msgError === false" class="title-btns">
     <p style="color: red;">Registro fallido, vuelva a intentarlo</p>
 </div>
 
 <form [formGroup]="registerForm">
-<div>
-  <label for="nombre">Nombre:</label>
-</div>
-<input formControlName ="nombre" type="text" id="nombre" name="nombre" required>
-<div>
-  <label for="apellido">Apellido:</label>
-</div>
-<input formControlName ="apellido" type="text" id="apellido" name="apellido" required>
-<div>
-  <label for="email">Email:</label>
-</div>
-<input formControlName ="mail" type="email" id="email" name="email" required>
-<div>
-  <label for="contrasena">Contraseña:</label>
-</div>
-<input formControlName ="contrasenia" type="password" id="contraseña" name="contrasena" required>
-<div>
-  <label for="fechaCaducidad">Fecha de Caducidad:</label>
-</div>
-<input formControlName ="fecha_baja" type="date" id="fechaCaducidad" name="fechaCaducidad" required>
+  <mat-form-field class="example-full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre" type="text" id="nombre" name="nombre" required>
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <mat-label>Apellido</mat-label>
+  <input matInput formControlName ="apellido" type="text" id="apellido" name="apellido" required>
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <mat-label>Email</mat-label>
+  <input matInput formControlName ="mail" type="email" id="email" name="email" required>
+</mat-form-field>
+
+
+<mat-form-field class="example-full-width">
+  <mat-label>Contraseña</mat-label>
+  <input matInput formControlName ="contrasenia" type="password" id="contraseña" name="contrasena" required>
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <mat-label>Fecha Caducidad</mat-label>
+  <input matInput formControlName ="fecha_baja" type="date" id="fechaCaducidad" name="fechaCaducidad" required>
+</mat-form-field>
+
 <div style="margin-top: 2rem;">
-  <button (click)="register()" class="btn btn-primary">Registrarse</button>
+  <button (click)="register()" mat-raised-button style="background-color: green; color: white;">Registrarse</button>
 </div>
 <div style="margin-top: 2rem;">
-  <button (click)="moveToLogin()" class="btn btn-primary">Volver</button>
+  <button (click)="moveToLogin()" mat-raised-button color="warn">Volver</button>
 </div>
 </form>
+<br>

@@ -1,8 +1,15 @@
     <div class="divs">
-        <div>
+        <div *ngIf="!spinner">
             <h2>Login</h2>
         </div>
-        <form [formGroup]="loginForm">
+
+        <div *ngIf="spinner === true">
+            <h2>Cargando...</h2>
+        </div>
+
+        <mat-spinner *ngIf="spinner === true"></mat-spinner>
+
+        <form [formGroup]="loginForm" *ngIf="!spinner">
             <mat-form-field class="example-full-width">
                 <mat-label>Usuario</mat-label>
                 <input matInput formControlName="nombre" type="text" id="nombre" name="nombre" required>

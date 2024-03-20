@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, delay, map, tap, throwError } from 'rxjs';
 import { LoginRequest } from './loginRequest';
 import { environment } from 'src/environments/environment';
 
@@ -34,7 +34,8 @@ export class LoginserviceService {
       }),
       //El map tranforma los datos
       map((userData) => userData.access_token),
-      catchError(this.handleError)
+      catchError(this.handleError),
+      delay(2000)
     )
   }
 

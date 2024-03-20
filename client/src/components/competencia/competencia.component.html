@@ -5,13 +5,15 @@
 <br>
 <div class="card-containerCompetitions">
     <div class="card" *ngFor="let competitions of competencias">
-            <div class="card-body">
-                <h5 class="card-titleCompetitions">Nombre: {{ competitions.nombre }}</h5>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Fecha de Creacion: {{ competitions.fecha_creacion }}</li>
-                <li class="list-group-item">Fecha Inicio: {{ competitions.fecha_inicio }}</li>
-            </ul>
+        <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Nombre: {{ competitions.nombre }}</mat-card-title>
+            </mat-card-header>
+            <mat-card>
+                <mat-card-content>Fecha de Creacion: {{ competitions.fecha_creacion }}</mat-card-content>
+                <mat-card-content>Fecha Inicio: {{ competitions.fecha_inicio }}</mat-card-content>
+              </mat-card>              
+          </mat-card>
     </div>
 </div>
 <br>
