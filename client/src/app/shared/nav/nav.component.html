@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li>
+      <li style="list-style: none;">
         <img src="../../../assets/round-account-button-with-user-inside_icon-icons.com_72596.svg" 
         alt="usuario.svg"
         style="width: 30%;">
@@ -21,10 +21,20 @@
       </li>
       <li [ngClass]="{'active': activeNavItem === 'clasification'}">
         <a (click)="active('clasification')" routerLinkActive="active" routerLink="/log/clasification" class="anchor">Clasificacion</a>
-      </li>  
-      <li>
-      <button class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
       </li>
+      <br>
+      <section>
+        <div class="example-label">Raised</div>
+        <div class="example-button-row">
+          <button mat-raised-button>Basic</button>
+          <button mat-raised-button color="primary">Primary</button>
+          <button mat-raised-button color="accent">Accent</button>
+          <button mat-raised-button color="warn">Warn</button>
+          <button mat-raised-button disabled>Disabled</button>
+          <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+        </div>
+      </section>
+      <button class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
     </ul>
   </div>
 </nav>
