@@ -23,6 +23,8 @@ import { MatCardModule } from '@angular/material/card';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+
 
 //https://material.angular.io/components/form-field/examples
 //DOC DE MATERIAL
@@ -47,6 +49,7 @@ import { MatListModule } from '@angular/material/list';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatIconModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
