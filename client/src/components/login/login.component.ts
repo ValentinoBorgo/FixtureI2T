@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit{
           console.log(userData);
         },
         error: (errorData) => {
+          this.spinner = false;
           this.msgError = true;
           console.log(errorData);
           this.loginError = errorData;
