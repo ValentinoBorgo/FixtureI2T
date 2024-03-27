@@ -18,9 +18,14 @@ Fixture de futbol con funcionalidades varias, autenticación de usuarios, creaci
 - ![Bootstrap](https://img.shields.io/badge/-Bootstrap-333333?style=flat&logo=bootstrap&logoColor=563D7C)</br>
 
 ## Instalación
-//
-//
-//
+
+1 - Clonar el repositorio</br>
+2 - Ejecutar algun tipo de servicio local en XAMPP o Laragon</br>
+3 - Importar la base de datos adjunta en el proyecto en el motor de bases de datos elegido</br>
+4 - Levantar el backend ejecutando el archivo FixtureApplication.java</br>
+5 - Ejecutar en la ruta FixtureI2T\client el comando  `npm install`:></br>
+6 - Proximamente en la misma ruta levantar el frontend con el siguiente comando `ng serve`:></br>
+7 - Ir a la ruta <b>localhost:4200</b> y utilizar a gusto</br>
 
 ## Contribuciones
 
