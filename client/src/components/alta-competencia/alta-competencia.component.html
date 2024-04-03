@@ -1,0 +1,40 @@
+<br>
+<div class="title-btns">
+  <h2>Formulario de Alta competencia</h2>
+</div>
+
+<br>
+
+<div  class="title-btns">
+    <p style="color: green;">Registro realizado efectivamente</p>
+</div>
+
+<div  class="title-btns">
+    <p style="color: red;">Registro fallido, vuelva a intentarlo</p>
+</div>
+
+<form [formGroup]="registerCompetenceForm">
+  <mat-form-field class="example-full-width">
+    <mat-label>Nombre de Competencia</mat-label>
+    <input matInput formControlName="nombre" type="text" id="nombre" name="nombre" required>
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <mat-label>Fecha de Baja</mat-label>
+  <input matInput formControlName ="fecha_baja" type="date" id="fecha_baja" name="fecha_baja" required>
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <mat-label>Fecha de Creacion</mat-label>
+  <input matInput formControlName ="fecha_creacion" type="date" id="fecha_creacion" name="fecha_creacion" required>
+</mat-form-field>
+
+<div style="margin-top: 2rem;">
+    <button (click)="registerCompetence()" mat-raised-button style="background-color: green; color: white;">Registrar competencia</button>
+  </div>
+  <div style="margin-top: 2rem;">
+    <button (click)="moveToMain()" mat-raised-button color="warn">Volver a Inicio</button>
+  </div>
+
+</form>
+<br>

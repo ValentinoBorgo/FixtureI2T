@@ -24,6 +24,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
+import { AltaCompetenciaComponent } from 'src/components/alta-competencia/alta-competencia.component';
 
 
 //https://material.angular.io/components/form-field/examples
@@ -42,6 +43,7 @@ import {MatIconModule} from '@angular/material/icon';
     EquiposComponent,
     PartidosComponent,
     RegisterComponent,
+    AltaCompetenciaComponent
   ],
   imports: [
     BrowserModule,

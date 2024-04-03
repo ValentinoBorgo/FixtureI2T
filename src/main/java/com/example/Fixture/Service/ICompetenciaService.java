@@ -15,4 +15,5 @@ public interface ICompetenciaService {
     public Competencia getCompetencia(Long id);
 
     public Competencia editarCompetencia(Long id, Competencia competencia);
+
 }

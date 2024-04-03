@@ -1,0 +1,31 @@
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center; /* Centra el contenido del cuerpo */
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+form {
+    width: 300px; /* Ancho del formulario */
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+form div {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.title-btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.example-full-width {
+    width: 100%; /* Ancho del input al 100% del contenedor */
+  }

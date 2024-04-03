@@ -8,6 +8,7 @@ import { EquiposComponent } from 'src/components/equipos/equipos.component';
 import { PartidosComponent } from 'src/components/partidos/partidos.component';
 import { CompetenciaComponent } from 'src/components/competencia/competencia.component';
 import { RegisterComponent } from 'src/components/register/register.component';
+import { AltaCompetenciaComponent } from 'src/components/alta-competencia/alta-competencia.component';
 
 const routes: Routes = [
   {path : '', redirectTo:'/login', pathMatch:'full'},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path : 'log/teams', component : EquiposComponent},
   {path : 'log/matches', component : PartidosComponent},
   {path : 'log/competition', component : CompetenciaComponent},
-  {path : 'register', component : RegisterComponent}
+  {path : 'register', component : RegisterComponent},
+  {path : 'log/add_competence', component : AltaCompetenciaComponent}
   /*
   {path : 'competencias'},
   {path : 'partidos'},

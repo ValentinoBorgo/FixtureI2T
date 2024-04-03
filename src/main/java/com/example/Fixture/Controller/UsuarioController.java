@@ -188,4 +188,18 @@ public class UsuarioController {
         }
     }
 
+    @GetMapping("/getIdByName/{name}")
+    public Long getIdByName(@PathVariable  String name){
+
+        try {
+            return usuarioService.buscarPorNombre(name).getId();
+            } 
+        catch (Exception e) {    
+        
+            return null;
+        }
+
+
+    }
 }
+

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CompetenciaServiceService } from 'src/services/competencia/competencia-service.service';
 
 @Component({
@@ -9,10 +10,15 @@ import { CompetenciaServiceService } from 'src/services/competencia/competencia-
 
 export class CompetenciaComponent {
   competencias: any[] = [];
-  constructor(private competenciaService : CompetenciaServiceService){}
+  constructor(private competenciaService : CompetenciaServiceService, private router : Router){}
 
   ngOnInit(){
     this.competitions();
+  }
+
+  moveToAddCompetencies(){
+    
+    this.router.navigateByUrl("/log/add_competence");
   }
 
   competitions(){

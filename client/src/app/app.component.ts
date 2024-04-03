@@ -17,7 +17,7 @@ export class AppComponent {
   viewRoute(): boolean {
     // Verifica si la URL actual coincide con la ruta específica
   const currentUrl = this.router.url;
-  return currentUrl === '/login' || currentUrl === '/register';
+  return currentUrl === '/login' || currentUrl === '/register' || currentUrl === '/log/add_competence';
   }
 
 }

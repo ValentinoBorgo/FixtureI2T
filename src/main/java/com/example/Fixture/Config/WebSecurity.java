@@ -56,6 +56,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/registrar/newUser").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/get").authenticated();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/getById/{id}").authenticated();
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/getIdByName/{name}").authenticated();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/participantes/get").authenticated();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/partido/get").authenticated();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/partido/getPartido/{id}").authenticated();

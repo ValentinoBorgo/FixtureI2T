@@ -1,8 +1,13 @@
 <app-nav></app-nav>
 <h2>Competencias: </h2>
 <br>
+<button (click)="moveToAddCompetencies()" mat-raised-button style="background-color: green; color: white; margin-left: 360px;">Crear Competencia</button>
+<br>
+<br>
+<br>
 <hr>
 <br>
+
 <div class="card-containerCompetitions">
     <div class="card" *ngFor="let competitions of competencias">
         <mat-card class="example-card">
