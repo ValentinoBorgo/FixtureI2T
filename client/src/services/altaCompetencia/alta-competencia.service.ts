@@ -24,8 +24,9 @@ export class AltaCompetenciaService {
         return throwError(error);
       }),
       mergeMap(response => {
-        if (response && response.id) {
-          return of(response.id); // Suponiendo que el ID del usuario está en una propiedad llamada 'id'
+        console.log(response);
+        if (response) {
+          return of(response); // Suponiendo que el ID del usuario está en una propiedad llamada 'id'
         } else {
           return throwError('No se pudo obtener el ID del usuario.');
         }
@@ -33,19 +34,30 @@ export class AltaCompetenciaService {
     );
   }
 
+  obtainDateTimeLocal() {
+    const fechaHoraActual = new Date();
+    const fechaHoraActualFormateada = fechaHoraActual.toISOString().slice(0, 16); // Formato YYYY-MM-DDTHH:MM
+    return fechaHoraActualFormateada;
+  }
+
   addCompetence(parametros: Params): Observable<any> {
     return this.getUserId().pipe(
       mergeMap(userId => {
         const headers = this.getToken();
         const competenciaData = {
-          userId: userId,
+          id_usuario: userId,
           nombre: parametros.nombre,
           fecha_baja: parametros.fecha_baja,
-          fecha_creacion: parametros.fecha_creacion
+          fecha_creacion: parametros.fecha_creacion,
+          fecha_inicio: this.obtainDateTimeLocal()
         };
 
-        return this.http.post<any>(environment.urlApi + 'api/competencias/crear', competenciaData, { headers }).pipe(
+        //Solo queda solucioanr esto, no tomo el id_usuario
+        console.log("USUARIO ID : "+competenciaData.id_usuario);
+
+        return this.http.post<any>(environment.urlApi + 'competencias/crear',competenciaData, { headers }).pipe(
           catchError(error => {
+            console.log(competenciaData);
             console.error('Error al agregar competencia:', error);
             return throwError(error);
           })
