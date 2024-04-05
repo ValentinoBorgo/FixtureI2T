@@ -16,9 +16,9 @@ export class AltaCompetenciaService {
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
 
-  private getUserId(): Observable<number> {
+  private getUser(): Observable<any> {
     const headers = this.getToken();
-    return this.http.get<any>(environment.urlApi + 'users/getIdByName/' + sessionStorage.getItem('user'), { headers }).pipe(
+    return this.http.get<any>(environment.urlApi + 'users/getByName/' + sessionStorage.getItem('user'), { headers }).pipe(
       catchError(error => {
         console.error('Error al obtener el ID del usuario:', error);
         return throwError(error);
@@ -41,19 +41,20 @@ export class AltaCompetenciaService {
   }
 
   addCompetence(parametros: Params): Observable<any> {
-    return this.getUserId().pipe(
-      mergeMap(userId => {
+    return this.getUser().pipe(
+      mergeMap(user => {
         const headers = this.getToken();
+
         const competenciaData = {
-          id_usuario: userId,
           nombre: parametros.nombre,
           fecha_baja: parametros.fecha_baja,
           fecha_creacion: parametros.fecha_creacion,
-          fecha_inicio: this.obtainDateTimeLocal()
+          fecha_inicio: this.obtainDateTimeLocal(),
+          usuario: user
         };
 
         //Solo queda solucioanr esto, no tomo el id_usuario
-        console.log("USUARIO ID : "+competenciaData.id_usuario);
+        console.log("USUARIO ID : "+competenciaData.usuario);
 
         return this.http.post<any>(environment.urlApi + 'competencias/crear',competenciaData, { headers }).pipe(
           catchError(error => {

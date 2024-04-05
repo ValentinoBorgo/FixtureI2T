@@ -46,7 +46,7 @@ public class Competencia {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_usuario")
     @JsonBackReference
-    private Usuario usuario;
+    public Usuario usuario;
 
     @PrePersist
     protected void onCreate() {

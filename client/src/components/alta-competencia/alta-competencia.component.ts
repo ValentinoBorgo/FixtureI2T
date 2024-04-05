@@ -16,6 +16,8 @@ export class AltaCompetenciaComponent implements OnInit{
     
   }
 
+  msgError : boolean | null | undefined;
+
 
   registerCompetenceForm = this.formBuilder.group({
     nombre:['',Validators.required],
@@ -26,7 +28,7 @@ export class AltaCompetenciaComponent implements OnInit{
 
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.msgError = null;
   }
 
   parseDate(data:any) {
@@ -44,14 +46,9 @@ export class AltaCompetenciaComponent implements OnInit{
   registerCompetence(){
     console.log(this.registerCompetenceForm.valid);
     if(this.registerCompetenceForm.valid){
-      console.log(this.registerCompetenceForm.value.fecha_baja);
-      console.log(this.registerCompetenceForm.value.fecha_creacion);
+      //Parseo de datos a formato DateTimeLocal
       this.registerCompetenceForm.value.fecha_baja = this.parseDate(this.registerCompetenceForm.value.fecha_baja);
       this.registerCompetenceForm.value.fecha_creacion = this.parseDate(this.registerCompetenceForm.value.fecha_creacion);
-      console.log(this.registerCompetenceForm.value.fecha_baja);
-      console.log(this.registerCompetenceForm.value.fecha_creacion);
-      //this.registerCompetenceForm.value.fecha_baja = this.registerCompetenceForm.value.fecha_baja?.toString();
-      //this.registerCompetenceForm.value.fecha_baja = this.registerCompetenceForm.value.fecha_creacion?.toString();
       this.altaCompetenciaService.addCompetence(this.registerCompetenceForm.value as Params).subscribe({
 
         next : (data) => {
@@ -59,16 +56,18 @@ export class AltaCompetenciaComponent implements OnInit{
         },
 
         error : (error) => {
+          this.msgError = true;
           console.log("ERROR EN HTML : "+ error);
         },
         complete : () => {   
           console.log("EXITOS");
+          this.msgError = true;
           this.registerCompetenceForm.reset();
         }
       })
     }else if(!this.registerCompetenceForm.valid){
+      this.msgError = true;
       console.log("ERROR");
-      
     }
 
   }
@@ -77,11 +76,5 @@ export class AltaCompetenciaComponent implements OnInit{
   moveToMain(){
     this.router.navigateByUrl("/log/home");
   }
-
-
-
-
-
-
 
 }

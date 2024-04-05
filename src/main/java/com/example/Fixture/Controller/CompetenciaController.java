@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.Fixture.Model.Competencia;
 import com.example.Fixture.Model.Participante;
 import com.example.Fixture.Service.ICompetenciaService;
+import com.example.Fixture.Service.IUsuarioService;
+import com.example.Fixture.Service.UsuarioService;
+
 import java.util.List;
 import com.example.Fixture.Service.CompetenciaService;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +28,9 @@ public class CompetenciaController {
 
     @Autowired
     private ICompetenciaService competenciaService;
+
+    @Autowired
+    private IUsuarioService usuarioService;
 
     @GetMapping("/get")
     public List<Competencia> getCompetencias() {
@@ -45,6 +51,9 @@ public class CompetenciaController {
     @PostMapping("/crear")
     public ResponseEntity<Competencia> crearCompetencia(@RequestBody Competencia competencia) {
         try {
+
+            competencia.setUsuario(usuarioService.getUsuario(competencia.getUsuario().getId()));
+
             Competencia nuevaCompetencia = competenciaService.guardarCompetencia(competencia);
             return ResponseEntity.status(HttpStatus.CREATED).body(nuevaCompetencia);
         } catch (Exception e) {

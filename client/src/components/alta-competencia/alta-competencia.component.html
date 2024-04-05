@@ -5,11 +5,11 @@
 
 <br>
 
-<div  class="title-btns">
+<div  class="title-btns" *ngIf="msgError === true">
     <p style="color: green;">Registro realizado efectivamente</p>
 </div>
 
-<div  class="title-btns">
+<div  class="title-btns" *ngIf="msgError === false">
     <p style="color: red;">Registro fallido, vuelva a intentarlo</p>
 </div>
 
