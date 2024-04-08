@@ -56,7 +56,7 @@ export class AltaCompetenciaComponent implements OnInit{
         },
 
         error : (error) => {
-          this.msgError = true;
+          this.msgError = false;
           console.log("ERROR EN HTML : "+ error);
         },
         complete : () => {   
@@ -66,7 +66,7 @@ export class AltaCompetenciaComponent implements OnInit{
         }
       })
     }else if(!this.registerCompetenceForm.valid){
-      this.msgError = true;
+      this.msgError = false;
       console.log("ERROR");
     }
 
