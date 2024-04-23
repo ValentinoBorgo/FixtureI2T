@@ -1,6 +1,9 @@
 package com.example.Fixture.Service;
 
+import com.example.Fixture.Model.Autoridad;
 import com.example.Fixture.Model.Usuario;
+import com.example.Fixture.Utils.NombreAutoridad;
+
 import java.util.List;
 
 public interface IUsuarioService {

@@ -32,6 +32,7 @@ public class Usuario {
     @Column(name = "fecha_baja")
     private String fecha_baja;
     
+    //@Transient
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_autoridades",
             joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id"),

@@ -62,13 +62,13 @@ public class UsuarioController {
 
      private final UsuarioMapper usuarioMapper = new UsuarioMapper();
 
-    //@GetMapping("/get")
+    @GetMapping("/get")
     public List<Usuario> getUsuarios() {
         System.out.println("USUARIOS ENCONTRADOS-------------------------------");
         return usuarioService.getListaUsuarios();
     }
 
-    @GetMapping("/get")
+    //@GetMapping("/get")
     public ResponseEntity<List<UsuarioDTO>> getUsuariosMaped() {
         List<Usuario> usuarios = usuarioService.getListaUsuarios();
         List<UsuarioDTO> usuariosDTO = usuarios.stream()
@@ -101,8 +101,10 @@ public class UsuarioController {
         try {
             return usuarioService.guardarUsuario(usuario);
         } catch (Exception e) {
+            System.out.println(usuario.getAutoridades());
             e.printStackTrace();
             Usuario error = new Usuario();
+            error.setAutoridades(usuario.getAutoridades());
             return error;
         }
     }
@@ -110,6 +112,7 @@ public class UsuarioController {
     @PutMapping("/edit/{id}")
     public ResponseEntity<Usuario> editarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
         try {
+            System.out.println(usuario.getAutoridades());
             Usuario usuarioActualizado = usuarioService.editarUsuario(id, usuario);
             return usuarioActualizado != null ? ResponseEntity.ok(usuarioActualizado) : ResponseEntity.notFound().build();
         } catch (Exception e) {

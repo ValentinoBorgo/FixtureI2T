@@ -28,10 +28,9 @@ public class Autoridad {
     @Enumerated(EnumType.STRING)
     private NombreAutoridad nombre;
 
-    public Autoridad(NombreAutoridad nombre) {
+    public Autoridad(NombreAutoridad nombre, Long id) {
+        this.id = id;
         this.nombre = nombre;
     }
-
-    
     
 }

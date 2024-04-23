@@ -1,5 +1,6 @@
 package com.example.Fixture.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,10 +9,14 @@ import org.springframework.security.core.userdetails.memory.UserAttribute;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.example.Fixture.Model.Autoridad;
 import com.example.Fixture.Model.Usuario;
 import com.example.Fixture.Repository.IUsuarioRepository;
+import com.example.Fixture.Utils.NombreAutoridad;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class UsuarioService implements IUsuarioService{
 
     @Autowired
@@ -40,7 +45,22 @@ public class UsuarioService implements IUsuarioService{
         usuario.setMail(user.getMail());
         usuario.setContrasenia(passwordEncoder.encode(user.getContrasenia()));
         usuario.setFecha_baja(user.getFecha_baja());
-        usuario.setAutoridades(user.getAutoridades());
+
+        log.info("AUTORIDAD +  ", user);
+
+
+        List<Autoridad> autoridades = new ArrayList<>();
+       
+        //Add authorities for roles of the users
+
+        for (Autoridad autoridad : user.getAutoridades()) {
+            String nombreAutoridadStr = autoridad.getNombre().name();
+            Long idAutoridad = autoridad.getId();
+            NombreAutoridad nombreAutoridad = NombreAutoridad.parsearNombreAutoridad(nombreAutoridadStr);
+            autoridades.add(new Autoridad(nombreAutoridad, idAutoridad));
+        }
+
+        usuario.setAutoridades(autoridades);
         
         return userRepo.save(usuario);
     }
@@ -58,8 +78,20 @@ public class UsuarioService implements IUsuarioService{
 
     @Override
     public Usuario editarUsuario(Long id, Usuario user) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'editarUsuario'");
+
+        Usuario u = this.getUsuario(id);
+        
+        u.setApellido(user.getApellido());
+        u.setAutoridades(user.getAutoridades());
+        u.setCompetencias(user.getCompetencias());
+        u.setContrasenia(user.getContrasenia());
+        u.setFecha_baja(user.getFecha_baja());
+        u.setId(user.getId());
+        u.setMail(user.getMail());
+        u.setNombre(user.getNombre());
+
+        return userRepo.save(u);
+
     }
 
     @Override
@@ -75,5 +107,4 @@ public class UsuarioService implements IUsuarioService{
         return usuarioEfectivo;
 
     }
-
 }

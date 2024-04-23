@@ -12,7 +12,32 @@ package com.example.Fixture.Utils;
  //Enumeracion
 public enum NombreAutoridad {
     
-    READ,WRITE,ADMIN
+    READ("WRITE"),
+    WRITE("WRITE"),
+    ADMIN("ADMIN");
     
+    private final String name;
+
+    NombreAutoridad (String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static NombreAutoridad parsearNombreAutoridad(String autoridadStr) {
+        switch (autoridadStr) {
+            case "READ":
+                return NombreAutoridad.READ;
+            case "WRITE":
+                return NombreAutoridad.WRITE;
+            case "ADMIN":
+                return NombreAutoridad.ADMIN;
+            default:
+                throw new IllegalArgumentException("Nombre de autoridad no válido: " + autoridadStr);
+        }
+    }
+
 }
 
