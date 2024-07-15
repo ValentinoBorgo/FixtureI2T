@@ -1,6 +1,6 @@
 # FixtureI2T
 <img src="https://www.competize.com/blog/wp-content/uploads/2020/12/hacer-fixture-crear-calendario-liga-excel.jpg" alt="Imagen estandar de fixture">
-Fixture de futbol con funcionalidades varias, autenticación de usuarios, creación de competencias, vista de resultados, generador de tablas de posición, etc.
+Soccer fixture with various functionalities, user authentication, competition creation, results view, leaderboard generator, etc.
 
 ## Características
 
