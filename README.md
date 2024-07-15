@@ -2,12 +2,12 @@
 <img src="https://www.competize.com/blog/wp-content/uploads/2020/12/hacer-fixture-crear-calendario-liga-excel.jpg" alt="Imagen estandar de fixture">
 Soccer fixture with various functionalities, user authentication, competition creation, results view, leaderboard generator, etc.
 
-## Características
+## Features
 
-- Funciones de CRUD basicas para gestionar un fixture futbol.
-- Funcionalidades especificas detalladas en el codigo.
+- Basic CRUD functions to manage a soccer fixture.
+- Specific functionalities detailed in the code.
 
-## Tecnologías utilizadas
+## Technologies used
 
 - ![JAVA](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)</br>
 - ![Sprin Boot](https://img.shields.io/badge/-Spring%20Boot-333333?style=flat&logo=SpringBoot&logoColor=563D7)</br>
@@ -17,19 +17,19 @@ Soccer fixture with various functionalities, user authentication, competition cr
 - ![Angular](https://img.shields.io/badge/-Angular-333333?style=flat&logo=Angular)</br>
 - ![Bootstrap](https://img.shields.io/badge/-Bootstrap-333333?style=flat&logo=bootstrap&logoColor=563D7C)</br>
 
-## Instalación
+## Installation
 
-1 - Clonar el repositorio</br>
-2 - Ejecutar algun tipo de servicio local en XAMPP o Laragon</br>
-3 - Importar la base de datos adjunta en el proyecto en el motor de bases de datos elegido</br>
-4 - Levantar el backend ejecutando el archivo FixtureApplication.java</br>
-5 - Ejecutar en la ruta FixtureI2T\client el comando  `npm install`</br>
-6 - Proximamente en la misma ruta levantar el frontend con el siguiente comando `ng serve`</br>
-7 - Ir a la ruta <b>localhost:4200</b> y utilizar a gusto</br>
+1 - Clone the repository</br>
+2 - Run some type of local service in XAMPP or Laragon</br>
+3 - Import the attached database in the project into the chosen database engine</br>
+4 - Start the backend by running the FixtureApplication.java file</br>
+5 - In the FixtureI2T\client directory, run the command npm install</br>
+6 - Next, in the same directory, start the frontend with the command ng serve</br>
+7 - Go to localhost:4200 and use it as you wish</br>
 
-## Contribuciones
+## Contributions
 
-Las contribuciones son siempre bienvenidas. Si encuentras algún problema o tienes alguna sugerencia, no dudes en abrir un issue o enviar un pull request.
+Contributions are always welcome. If you encounter any problems or have any suggestions, feel free to open an issue or send a pull request.
 
 ## Autores
 
