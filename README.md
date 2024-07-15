@@ -31,7 +31,7 @@ Soccer fixture with various functionalities, user authentication, competition cr
 
 Contributions are always welcome. If you encounter any problems or have any suggestions, feel free to open an issue or send a pull request.
 
-## Autores
+## Authors
 
 Osvaldo Cozzi</br>
 Juan Farre</br>
